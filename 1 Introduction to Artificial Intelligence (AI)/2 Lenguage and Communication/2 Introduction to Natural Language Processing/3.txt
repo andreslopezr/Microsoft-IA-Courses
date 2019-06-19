@@ -1,0 +1,91 @@
+All of the examples of working with text and speech so
+far has assumed that we're working in English.
+But what if we need to collaborate with someone who
+speaks another language?
+In Power BI to understand language enables automated
+translation which can be a powerful way to bring people
+together.
+Let's take a look at the Microsoft Translator API and
+see it in action.
+Now for translation,
+there are actually two cognitive services APIs.
+There's one for text and one for speech.
+We'll focus on the text one, just cuz it's simpler to
+demonstrate in the video like this.
+But you could use either of them to do automatic translation
+through a number of different languages.
+So let's take a look.
+So just like any other of these cognitive services we've been
+working with,
+we're gonna provision it in our Azure subscription.
+And I've actually already provisioned the text translation
+cognitive service here.
+And I have some access keys available for
+me to use with that service.
+So we go back to my jupyter notebook, and
+you can see here's my key.
+So we'll just go and populate that variable.
+So we have the key.
+And then we're ready to go and translate some text.
+And this is a pretty similar setup to the Bang speech API in
+that we have to initially get an access token, and
+then use that access token for ten minutes to call the method.
+So we got similar code to what we had previously.
+Before we do all of that however,
+I'm gonna first of all ask for
+some text that I wanna translate.
+So we're just gonna type in some text, then the fromLangCode.
+So what's the language I wanna translate from?
+What's the source language?
+And then the to language code.
+What's the language I would like to translate that code into?
+So here's the code to do that.
+Basically, we take our text key and
+use that to get our token, so we get our access token.
+An access token is gonna be bearer plus whatever
+the token is that gets returned.
+And then we can set up our headers.
+In the header we've got the authorization which is
+the accesstoken we've just retrieved.
+We defined some parameters, so
+this time we're not passing up the information on the body.
+We're actually passing up these parameters.
+And the parameters are basically the text I wanna translate,
+the language I wanna translate it to and
+the language I wanna translate it from.
+So we pass those up.
+We're then gonna call this api.microsofttranslator.com is
+the URL.
+It's a GET request and
+we're gonna pass it to that bit of the URL and we're calling
+effectively with this translate method is what we're calling.
+Pass that all up, and what we'll then get back is
+the translation because this is the text translator,
+it'll come back in text.
+So let's just go ahead and run that and type in some text.
+Now as it happened, I did learn some French at school.
+And if anybody is watching this who went to school with me,
+you'll know that I didn't learn very much of it.
+So we'll just type in,
+I learned French at school but I've forgotten it.
+I'll just correct our spelling there.
+So that's the text I wanna translate.
+And what language is that?
+Well that's English, so EN is the code for language.
+What language would I like to translate it to?
+Well FR for French.
+And I get back the French.
+[FOREIGN] So
+that's what's happened with my high school French.
+Now we could go ahead and we could run that again.
+We could try various different things as well so
+I would like to speak Spanish.
+Again, that's in English.
+And this time I want to convert that to Spanish, Espana.
+And we get back our translation.
+So we've got this translation API, very quickly we can submit
+some text, in this case in one language, and have it almost
+instantaneously translated to another language of our choice.
+And that can be very useful for
+bringing people together from different languages,
+different countries and enabling them to communicate.

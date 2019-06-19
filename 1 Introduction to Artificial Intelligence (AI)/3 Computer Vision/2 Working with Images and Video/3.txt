@@ -1,0 +1,96 @@
+As humans we're genetically predisposed to detect faces just why so often we
+imagine we can see faces in clothes or wallpaper or curtains as we collaborate
+with AI software we can use live cameras and images to enable computers to see
+the world around them face detection the ability to determine whether or not a
+human face is present in an image is an important capability for the eye
+especially if this can be combined with face recognition to match the same
+person in multiple images or to identify specific individuals the face api is a
+cognitive service that's designed to work with faces and images well the
+first thing I need to do is I need to provision the face API and as your so
+I've gone ahead and done that I've got a face service here and if I open that up
+I can take a look at the keys that are required from my client applications to
+to work with that so having set that that up I'm now ready to go and use it
+and we're going to write some code and the first thing I need to do obviously
+is specified the the URI in that same location specific depending on where I
+provisioned my service so in this case it's in the West US and the key that's
+required to connect to my service I'll just get those variables
+initialized now the the face API I could just make the HTTP requests as I've been
+doing with with some of the other services but actually there is a
+cognitive face SDK and it's available as a Python package so that that acts as a
+wrapper around that and just makes a little easier to work with so I'm going
+to go and use that and I'm also going to install the the pillow API which again
+is used to work with with images or the pillow package rather so we'll run those
+and I've actually already installed them so it's gone ahead and got those
+libraries in place so no I want to do is I want to take an image and see if I can
+detect a face in that image and what I'm gonna do is I've got a bunch of imports
+here just I can display the image and I've imported that cognitive face API
+here as CF so I'm gonna use that and there's a bunch of
+functions I can use on that CF our library to make life easier for myself
+so I'm going to set the base URL to my URI from my specific service and I'll
+set the key to my key and that means that I'm ready to go in and make calls
+to my own instance of that service now I'm going to go and grab an image of a
+face I've got this this URL here with a file and I'm gonna grab that and then
+call the the face detect method passing it in that URL to see if we get back any
+information about faces now if there are one or more faces detected in that image
+we'll get back a collection of these face IDs so we'll look at the results
+we'll look at the first one and we'll get the face ID of that so we wonder
+the first face that our detect and they could of course detect multiple faces in
+an image and I could actually process all of the faces in there but I'm only
+really concerned about the first one in this instance so we're going to get the
+the ID and it will assign an ID to that face so we'll just go and take a look at
+what that ID looks like and then what I'm gonna do is I'm just gonna go and
+grab the the image itself and open it up and display it and then for each of the
+faces that's found and my case I'm really only concerned about the first
+one for each one that's found I'm gonna go and find the location in the face
+where that in the image where that face exists and I'm gonna basically draw a
+rectangle around I'm gonna draw a blue rectangle around the face where it gets
+found because what I get back is the the upper-left coordinate of the face and
+the width and height so I can work with that to draw a rectangle around it and
+then we'll just display that face so we'll run that code and here's the image
+that comes back and sure enough I've got blue rectangle it's it's detected there
+is in fact a face here this looks like a a person in this image
+alright well what if I've got that image of me and I want to compare that with
+another image maybe I am implementing some sort of automatic face detection
+system maybe I'm using this for security for getting into a building and I want
+the the AI solution in my building to recognize me and compare me to another
+image that has of me and see if I'm the same person well to do that what I'm
+going to do is I'm going to grab another image
+and I will just open that and then we're gonna do a face detect on that image as
+well so we'll take that image and do exactly what we did before we're go and say hey
+here's an image tell me is there a face and if there is tell me where it is I'm
+more importantly given an ID so what we get back is the the ID for the second
+face face number two we've already got the ID for the first face is actually
+here that's the ID that was assigned so we'll get the ID for the second face and
+then I've got this function verify face where I'll pass in the two face IDs and
+we will use this verify method from my face API to see if the ID for the first
+one is the the same as the the second one so or at least to see if the person
+with the ID for the first one is the same as the person with the ID for the
+second one so the IDS themselves won't be the same
+but it can check to see if it's the same person and if it is we will draw a face
+with a rectangle around it and basically we'll use a red rectangle if it's not
+the same person and a green rectangle if it is the same person and there's a
+confidence level that's associated with this that tells me how confident it is
+in that match so we can go ahead and run that chord and it comes by there's a
+nice bright green rectangle around this one that says yeah this looks like it's
+the same person and actually I'm ninety one and a half percent confident that
+it's the same person so if I go and look at the previous image here is here
+here's the second image and it looks like yep that looks like the same person
+to me all right well let's let's try with a slightly different one let's see
+if we can get this to work with a something's a little more complicated
+now I know you'll find is hard to believe but I wasn't always as dashingly
+handsome as I am now and if I look at this image here it's not the older one
+where I had a bit of a gray goatee going on and I'm wearing sunglasses and I look
+a little bit different and it still thinks that's the same person it's still
+giving me a green rectangle but the confidence has gone down a bit it's a
+little less sure but it's still you know definitely seeing this this looks like
+the same person well let's try with another face let's see if I could you
+know spoof the security systems here and an impersonate someone else
+and this time it comes back well no definitely not the the same person we've
+got a big red square around here this is a not the same person at all so it's
+able to differentiate between the the different faces that get identified and
+tell me whether they match or not and that's a really useful thing for AI if
+you think about the fact that when we deal with people we we quite often
+recognize them and we know who we are and we can tell if we've met that person
+before and so on all the way this is just a way of extending that to AI and
+having the ability to first of all identify faces and secondly to match
+them to other images or other recollections of those faces

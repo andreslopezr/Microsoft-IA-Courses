@@ -1,0 +1,46 @@
+Well I've created a QnA knowledge base and I can use it as the back end for a
+bot. so now I just need to go ahead and create that bot. Well here I am in the
+Azure portal ready to create my bot. So I'll just go ahead and add a new web app
+bot, search for that, and we'll add one of these and just like before. When we
+create our bot we have to give it a name, so I'm gonna call mine BadJokes -  that's
+fundamentally what it does. We'll put it into the appropriate subscription that
+we want to use, and we will put it into our existing resource group that we
+created for our QnA service earlier on. So we'll put on the West US. We'll choose
+the appropriate pricing tier for that - I'll just go with the the free tier; and
+then we need an app name. Again that's already gone, so we'll just add something
+on the end of that to give us a unique name. We're going to use the appropriate
+template -  I'm gonna use a template that's gonna let me use the QnA maker. We'll
+stick with C#  this time just for a change, but what we'll do is go down and
+choose the question-and-answer template; and then we are going to finish off this
+this wizard. It's going to create the app service plan in the West US and it
+will create some storage for that bot as well, and some apps insights. So we'll go
+ahead and and choose create; and now we're going to validate those settings.
+We'll just scroll along here a little bit and then it's going to go off and
+deploy that new bot... and then when the bot has been deployed, we are ready to go
+and look at that resource. We'll have to make a few changes before we are
+ready to use this because we have to connect it to our QnA service, so to do
+that I'm gonna go and take a look at the application settings for this app
+service and I'll just load those; and if I scroll
+down a little bit here I can see a number of different application settings
+that we need to use and that are some that are specific to working with the QnA
+service. we need a QnA authentication key, we need an endpoint host name, and we did
+a knowledge base ID. Now all of that information is available to us in the
+QnA knowledge base that we deployed, and I can see that information here. So the
+first thing I need here is the knowledge base ID and that's this GUID here in the
+URL; so we'll just go ahead and copy that to the clipboard and then we'll put the
+knowledge base ID in here. And then we also need the the endpoint hostname
+and if I go back to here there's the the host so I can see endpoint host name. And
+we need an authentication key as well and if I go back to here there's the
+authorization endpoint key there so we'll grab that and we'll
+put that in here as well. So those are the three settings we need to connect
+our bot to our QnA knowledge base. So I'll go ahead and save those settings, and that's
+gone ahead and updated those app settings for me. So I'm now ready to go
+and test my bot and I can just go and test that in the web chat interface.
+Up it comes and I'm ready to start so I can start off just by being polite and
+saying hello and I get back my response from BadJokes hello.
+Why did the chicken cross the road
+and I get by my proper response to the other side. So we've now created a bot
+and we've connected that to our QnA knowledge base and we can then deploy
+that bot through any of the regular channels the bots can be connected to
+through and it will use that knowledge base to answer the questions that users
+submit to it.

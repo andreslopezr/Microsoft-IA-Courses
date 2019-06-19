@@ -1,0 +1,190 @@
+Well having created and tested a model, you can publish it
+as a predictive experiment and then deploy it as a web service.
+So here I am in Azure Machine Learning Studio.
+And I have the diabetes classification experiment that
+we saw previously.
+So I've run the experiment, I've tested it.
+And if you remember I am getting a pretty good ROC
+curve at the end of this that tells me,
+it's predicting pretty well as a classifier,
+whether a patient is likely to have diabetes or not.
+So what I wanna do is I wanna publish this as a web
+service that I can then consume from the client applications.
+So to do that, first of all, I need to run the experiment,
+which I've already done.
+You can see that I've got little ticks there that have been run.
+So now I can set up a web service.
+And the type of web service I'm gonna set up here is
+a predictive web service.
+So we'll go and choose that.
+And what that's gonna do,
+is it's gonna run off in the background,
+it's creating actually something called a predictive experiment.
+And you'll see it move some things around here.
+And then when it's done,
+I'll just close that little notification.
+And you can see I've actually now got two tabs.
+I've got my original training experiment which was called
+Diabetes.
+And I've now got this predictive experiment,
+which is called Diabetes [Predictive Exp.], but
+which isn't really particularly helpful.
+So I'm gonna just change that to Diabetes Predictor,
+so that I know what this thing is.
+Now, what's actually different about this experiment?
+Well, it's copied a lot of the modules from
+the other experiment across.
+You can't really see very clearly, so
+I'll just give us a little bit of room to work in, and
+center everything, and make sure that we can see what's going on.
+So we'll zoom in a bit and take a look.
+So we've got our input here, our diabetes input.
+And I've also got this web service input going on here.
+So, you can see those are connected to the same place.
+And what we're saying is, look,
+when we run this as an experiment in Studio,
+we're gonna use the data that's in diabetes CSV.
+But when I actually publish it as a web service,
+the input will come from the web service.
+The client application will send up the new data
+that tells me what I wanna look at.
+Then we're gonna join that to our doctor's data,
+we'll apply the same math operations we did previously.
+Then there's some other stuff going on here.
+Instead of having that normalized data module that we
+had it's got this apply transformation.
+And it's encapsulated the normalization that I did
+in my experiment.
+In other words, it's gonna apply the same statistical
+measurements of the data when it normalizes any new data
+that comes in.
+So whatever the statistics of my test data are,
+or my training data rather,
+that's what's gonna be used for any new data that comes in.
+And that makes sense because if you think about this,
+we might call this with brand new data that, or maybe it only
+has one rule of data and trying to normalize that one rule.
+Trying to get all the values within the same scale doesn't
+really make sense.
+And so we'd get an error in that case.
+So, what it's gonna do is it's gonna use the same statistics
+and apply the same normalization logic that it did when it
+trained the model.
+And it will do that for both my normalizations.
+We're then obviously not gonna treat patient ID and
+physician as predictive features, and then we've got our
+trained model that we trained in our training experiment.
+So we don't need to retrain that,
+we're just gonna go ahead and
+use the one that we trained when we trained the model, and
+that's what we're gonna use to score our results.
+And then those results will be passed out
+as the output from the web server.
+So it's a little bit different from our original experiment.
+Now there's a couple of things that I wanna change here before
+I publish this as a web service.
+This web service input is what my client applications are gonna
+have to provide as input, and
+it's based on what we've got in the diabetes CSV file, and
+if I just remind you of what's in that, It includes
+the diabetic label, whether or not the patient is diabetic.
+Now that doesn't really make sense that a client application
+would already know if the patient is diabetic and
+then ask you to predict whether or not the patient is diabetic.
+So what we're gonna do is we're gonna remove that Dataset.
+I don't want my input to be based on that.
+And instead I want it to be based on
+a manual input that I'm gonna define.
+I could just go and point to another file or something, but
+I'm just gonna enter the data manually and
+say this is what I want my input to look like.
+So we need to specify what that obviously looks like,
+so let's say go in type that in.
+So it's going to be CSV and it's going to have a header.
+And so we'll just go ahead and I've already got some text here,
+so we'll just paste it in.
+So I've got my data there, and I just got a few rows of
+sample data, and it doesn't include the diabetic column.
+If we go along the end the last column is age.
+So we've got our data there that we wanna just go and
+predict with.
+Now what that means is all the way through the rest of my
+experiment if I have used that column, if I referenced that
+column anywhere I need to get rid of it.
+So I'm just gonna go through and check and
+make sure we haven't used our diabetic column anywhere in any
+of the other Locations, Patient Id, but not diabetic.
+We haven't referenced that, so we don't need to go and
+remove it.
+I think but if I had,
+I would need to remove it from any modules that were using it.
+So we'll go ahead and run that just to see what it looks like
+with that test data just to make sure everything works.
+And when it finishes,
+I've got little ticks all the way through.
+It seems to have worked.
+If I just view the output of that.
+This is what's gonna be passed back to the client.
+Now It's gonna include things like the patient ID,
+the pregnancies, the plasma glucose.
+In other words, all the same fields that the client
+application passed in in the first place as well as
+the scored labels and scored probabilities.
+And scored labels and scored probabilities aren't really very
+meaningful output names.
+So I probably wanna change and
+just return the information that the client actually cares about.
+And so to do that, I'm just gonna add a SQL model here and
+apply SQL transformation module.
+And it will take the output from our scored model and
+we'll add it to that and then we'll make the output of the SQL
+be what we passed to the web service output.
+And then we'll just go and modify this SQL script.
+So we'll just go and
+replace this with some existing code I have.
+And here's my code.
+I'm basically getting the patient ID and the physician.
+So I might be interested to know who's this patient's doctor?
+I might need to inform them that we wanna test them further for
+diabetes.
+The Scored Labels, we'll give that a different name.
+We'll call that DiabetesPrediction and
+Scored Probabilities we'll just call Probability.
+So we've saved those changes and we are ready to go and
+just run that experiment one more time just to make sure
+everything works.
+And if I take a look at what's gonna get returned to the web
+service client now.
+I've got the patient ID, the physician, the diabetes
+prediction, a one or a zero, and then the probability for that.
+So you can see that we've built out our experiment to train our
+model, we then publish that as a predictive experiment.
+I've made a few changes to the predictive experiment.
+Just to affect the way that it's gonna be published for
+our clients.
+So now I'm ready to deploy this as a web service and
+I actually have a couple of choices,
+there's what we call a classic web service which is compatible
+with the stand alone version of Azure and machine learning.
+But we've also got this new web service,
+I'm gonna deploy using that load the pop up.
+And it's going to deploy this as a web service and give a name,
+the name it generates is not very friendly, so I am just
+gonna call it DiabetesPredictor, without a space.
+It's gonna store this web service in my storage account
+and I need to associate it with a pricing plan, so
+that we know how to charge for the calls that get made.
+And I've got my plan that I deployed when
+I provisioned my workspace.
+So we'll go ahead and
+deploy that experiment as a web service.
+And when it's deployed,
+I get this web services website opening up where I can manage
+all of my web services I have deployed.
+And I'm in my Diabetes Predictor website, and
+I can get information from here about the number of requests,
+obviously there haven't been any yet.
+And do things like configure it, and test it.
+So there's a number of options here for me working with this.
+Later on we're gonna come back and
+look at how we consume this web service.

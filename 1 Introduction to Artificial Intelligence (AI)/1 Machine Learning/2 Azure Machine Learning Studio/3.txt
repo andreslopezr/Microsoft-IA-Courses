@@ -1,0 +1,172 @@
+Let's take a look at regression model in Azure ML.
+So, here I am in my Azure ML Learning Studio.
+And I've got my calories experiment that we
+started previously.
+And you can see I've got the calories and the exercise files,
+I've joined them just as we did before, and
+then I converted them to CSV so I could do some visualization of
+them and see some of the relationships.
+Now I have added a few more modules to this.
+Now I'll just walk you through what we've done very
+quickly here.
+We have got an edit metadata model module here,
+and what I'm doing there is I'm taking that Gender column, if
+you remember there is a Gender column, just visualize this.
+Which is male or female.
+And that's obviously not a numeric value.
+It's a category, it's a categorical variable.
+So I'm making it categorical.
+If I have a look at the properties in here,
+you can see that I am just saying this is categorical.
+So treat it as a categorical variable.
+Then I've got an apply math operation here, and what I'm
+doing here is I'm taking a duration and heart rate.
+And if you remember when we compared some of these different
+values to calories built to the scatter plot, there were kind of
+curved relationships that weren't exactly linear.
+And so sometimes just having another version,
+doing what we call feature engineering.
+Creating another feature, based off an existing feature,
+with a different kind of mathematical calculation,
+can help me build up a better relationship.
+So going for a power of two, basically squaring these
+columns, gives me an alternative way to compare them, and by
+squaring them I might find I get a better fit against calories.
+So then there's another math operation here to calories
+itself.
+I'm actually changing my calories label that I want to
+predict, and I'm changing it to the log of calories,
+I'm using a natural log function.
+Now there is a reason I'm doing that,
+I'm not just being contrary.
+I wanna make sure that I don't predict any negative calories,
+because of course, you can't burn negative calories.
+So we're converting that to a log so that our prediction will
+actually be log of calories, rather than calories, and
+it will always be a positive number.
+Now then, it's really common to normalize or
+scale the data that we're working with.
+If we've got lots of different numeric values,
+all on different scales, that can mean that values that
+have a particularly high number can dominate the training of
+the model when we come to create our regression model.
+So we're scaling them all to be a value between zero and one,
+effectively.
+And I'm using a couple of different types of
+normalization.
+The numerics that have a reasonably normal distribution,
+in other words,
+the ones that have that kind of bell shaped curved histogram.
+I'm using something called disease score normalization to
+bring those down into the same scale.
+And then the ones that aren't kind of normal distributions.
+There's a couple of columns in there like the age and
+the duration and the duration squared.
+They aren't really sort of normal looking distributions.
+So I'm gonna use this min-max version of normalization,
+it just works better for that type of distribution.
+Then I've got a little bit of tidy up work here.
+And calories itself is the original label
+that I'm trying to predict,
+although now I'm trying to predict the log of calories.
+Well, user ID is not really a very useful predictive column,
+it's just a unique ID for each user,
+it shouldn't have any bearing on how many calories they burn.
+And calories itself is the original
+label that I'm trying to predict,
+although now I'm trying to predict the log of calories.
+So I don't wanna use calories as a feature, and so
+I'm basically just saying, these aren't features,
+don't consider them when we're building the model.
+All right, well then we get into the actual model building, and
+the first thing I'm gonna do is split the data randomly into
+two sets,
+and that's because this is an example of supervised learning.
+So I'm gonna take 70% of my data and use that to train the model,
+but I'm gonna hold back 30% of that training, so
+that I can then test the model using some observations where
+I actually know what the label should be, and
+that let's me see how accurately the model is predicting.
+So we've got that 70, 30 split there, and
+then we train the model, and
+we're training a model using a linear regression algorithm.
+There's lots of different algorithms you can use for
+training regression models and for different types of models.
+We're gonna use linear regression,
+which is fairly traditional kind of well known algorithm for
+training these types of models.
+We're training the model to predict the log of calories,
+the ln calories that we calculated earlier on.
+And then once we've trained it,
+we are gonna score it by comparing the predictions that
+get generated with the data from our test set that we held back.
+So we'll score it and we'll get some predictive labels, or
+scored labels as they're called, and we can compare those
+to the original labels and see how well we're predicting.
+And that will allow me to evaluate the model, as well and
+see those kind of performance metrics that we use for
+regression models just to see how well it's performing.
+And then finally I have an Apply Math Operation,
+because what we predicted was the log of calories, and
+of course what I actually want is calories.
+So I wanna convert that back to calories by using
+the exponential function.
+So I can go ahead and run that experiment,
+I've actually already run it,
+you can see the green ticks here,
+I've already run the experiment.
+So if I take a look at the Score Model,
+the output of that, and I just see what we've got.
+Well here are, all the columns are in my dataset, including all
+the ones I've generated, so there is my duration squared
+effect, duration to power of two and the heart rate as well.
+And I've got my log of calories here, that's what I'm
+trying to predict, and then I've got the actual scored labels.
+That's what I did predict.
+You can see they are actually reasonably close.
+The distributions look pretty similar, and
+I can see the numbers themselves are fairly close.
+But that's not really surprising,
+because it's the log,
+so the differences are gonna be fairly small.
+What I'm really interested in is the metrics that
+tell me how well that model is actually performing.
+So, let's have a look at my evaluating model output.
+And we get a whole bunch of metrics here that we talked
+about briefly in the lecture.
+Now the Mean Absolute Error and
+Root Means Squared Error are absolute measures.
+So they're measuring, in this case in the unit of log of
+calories, so it's kind of a meaningless number this,
+it doesn't really help me very much.
+But the relative ones are quite useful.
+These are between zero and one, and for
+relative absolute error and
+relative squared error I want them to be fairly close to 0.
+And it looks like, well, 0.02, 0.1's maybe a little high, but
+they're close enough to zero for me to be comfortable.
+And the coefficient of determination, or R squared,
+we sometimes call it, we want that to be near one.
+And it's 0.97, so actually, that's looking pretty good.
+And if I look at my histogram,
+most of the error values are downs toward the low end here,
+I haven't got any really big errors.
+I've got a few little outliers along the way, but
+most of my headers are quite small.
+So that tells me that it's predicting reasonably well.
+And then I've used this math operation here to convert my
+predicted log of calories back into calories, and
+now I'm just gonna visualize that.
+I'll just move along to the end of here and
+I can see here's the exponential of my scored labels.
+So that's what is predicted in terms of calories.
+And if we just move that way slightly,
+here is the actual calories.
+So 172 versus 148, 99 versus 122,
+178 versus 166, 55 versus 51.
+So they're kind of within the kinda ballpark.
+They're reasonably close to the predicted number of calories.
+The predicted value's reasonably close to the actual
+number of calories that were burned.
+So I can be reasonably confident that this model
+is producing a pretty good prediction for my calorie burn.

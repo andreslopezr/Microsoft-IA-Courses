@@ -1,0 +1,73 @@
+sentiment analysis is a technique that we can use to analyze text and try to
+discern whether the text indicates that the writer is happy or unhappy or
+perhaps neutral about something it's often used to analyze things like tweets
+or customer reviews on a website or emails or a really any message where
+it's important that we know how the person who wrote the text was feeling at
+the time so I've got here some tweets data that I'm gonna use to train a
+machine learning model this is data that's been taken by some researchers
+and they've collected 160,000 different tweets and they've labeled them as
+either positive or negative using 4 for positive tweets and 0 for negative
+tweets so we've got a whole bunch of data here that's already been prepared
+for us and the labels are already in there so we have some known labels and
+we can use not to train a machine learning model to do that I'm gonna pre
+process that data using some of the techniques that we've already seen so
+we've got a Python script here I just want to draw your attention to the stop
+words here rather than using the built in NLTK stopwords library I've
+actually compiled a set of stop words that include words and stems that I've
+found in the text that I don't think really add any value so we're using our
+own set of stop words but other than that the code is pretty similar to the
+kind of thing we've seen previously we're getting our data set that's the
+first data set that comes into this module with our tweets and our stop
+words data set is our custom stop word then we've got some code that gets the
+data set that has the sentiment and tweets and just simply grabs the column
+that contains the tweets and then we go through each of those tweets and do all
+the things that we've been doing up till now we remove all the digits we remove
+the punctuation we change everything to lowercase we stand the tweets so that we
+get the stems for each of the words we remove our stop words and then the final
+thing we're going to do is we're going to change that sentiment value to a 1 if
+it's positive and -1 if it's negative just to make it a little more
+intuitive so that converts our tweets data set and now we've got our
+pre-processed text ready to analyze and the next thing I'm going to do is
+something called feature hashing a feature hashing really is a way of
+taking the text that appears across multiple documents or in this case
+tweets and identifying common individual words and small phrases depending on
+what the NGram settings are now the NGram setting here is - and what we're
+doing then is we're looking for individual words and short phrases that
+appear commonly in these tweets and what we do is we convert these into numeric
+indicators with a 1 or a 0 to indicate whether or not the particular phrase
+appears or doesn't appear in that tweet so the end of all of that we should end
+up with a whole bunch of additional columns that contains simply 1 or 0
+depending on whether a particular phrase appears in the tweet or not and after
+we've done that it doesn't actually matter what the text is anymore because
+I've got the indicators that tell me things that frequently appear in the
+text of my text column and that might affect the the sentiment so now I can
+remove the tweets column I don't need the actual text anymore I'll use those
+numeric columns in order to train the model
+now because this is a classification model it's supervised learning we're
+going to split the data and we're going to use 70% of the data in this case to
+train our model
+we will train the model to predict sentiment that's a value of 1 or -1
+and we will use a two class boosted decision tree algorithm to do that
+we do that and then we can score the model based on the data that we've held
+by for testing and we can evaluate the effectiveness of the model
+now if I just take a quick look at that you can see that from the ROC curve
+we're certainly doing better than 50-50 guessing this maybe not as good as it
+could be but it's a pretty decent attempt to predicting the sentiment
+value so we've got a working sentiment
+analysis model here and I've published that as a predictive
+experiment
+I've removed the sentiment column from the inputs of the web service so we just
+need to provide the tweet text and then I've deployed that as a web service
+so now I can go and consume that web service Here I am in Excel and I've used
+the Azure machine learning add-in to connect to my web service now I've put
+in some tweet text here that I just want to get the sentiment for and I can go
+ahead and click predict and it will connect to the web service and get bike
+my results I could perhaps make things a little
+clearer here just by adding some conditional formatting so add little
+green upward arrows for positive and a red downward arrow for negative and you
+can see that sure enough it's projecting those classifications based on the text
+so here we've seen how we can use a lot of the techniques that we've seen
+previously to do text processing and text analytics to build up a machine
+learning model to predict whether the text is positive or negative and that
+can be useful in environments where we needed to analyze texts from customers
+or from employees to get a sense of the sentiment behind the text

@@ -1,0 +1,82 @@
+Well let's take a look at creating a basic bot using the Azure Bot Service. So
+here I am in the Azure portal and I'm going to create a new web app bot, and to
+do that I'm gonna just add a new resource to my account here. I could
+go and find it it's in AI & Cognitive Services or I could just go and simply
+search for bot and in the results there is a web app bot; so either way we're
+going to find that and we're gonna create one of these. So the first thing
+my bot needs is a name, and I'm gonna call mine ShoutyBot  and
+there's a few other things i've got to fill in here. I'm going to create a
+resource group for it just to manage all the related resources together. I need to
+choose where I want to deploy that, so I'm just going to pick the data center
+that's nearest to me which is actually the West US2 data center. I need to
+choose the the pricing tier for this bot and there's a number of pricing options
+available to me, I'm going to use the free one just because I'm going to test
+this out and play with it. Then I need to give it an app name - it's going
+to create an Azure web app to support this bot, so we have an app name there
+for it which just takes the same name as the bot in this case. Now I'm going to
+choose the template on which I want to base my bot, and there's a number of
+different templates that you can use depending on the type of bot you want
+to build. We're going to build a very simple bot here - we're just
+going to simply use the Node.JS basic bot template, so we're going to
+generate some some simple Node.JS code to create a very simple bot; so we'll select
+that and then we'll carry on setting up these settings. We need to set the
+service plan location -  we need a service plan in order to pay for our bot, now
+obviously I've chosen the free tier so we won't be paying very much but I still
+need to set up a service plan, so we'll set that up; and just to make life easy
+for myself I'll put that in the same location as I put the bot itself.
+Once I've done that it's gonna create a storage account to store some of the
+data that's used by the bot -  it's automatically generated a
+name for that. I don't need to make any changes to that, so I'm happy with that.
+Then it's going to create some application insights so that I can track
+the usage of the bot, and again what I have to specify is the location; and just
+to keep things easy I'll put everything in the same location. So that's all the
+settings I need to create. I'll just go ahead and create my bot, and it will go
+and validate those settings and make sure that we're ready to go, and
+then once it's validated them it's gonna go off and start creating my bot...
+...and then when deployment has succeeded, I get a little message here to say that my bot
+has been created; and if I go and have a look at the resource groups that I have
+in my Azure subscription, I can see they've got a resource group called
+ShoutyBot, and if I have a look in there I can see all the different resources
+that are associated with my bot. So they're all gonna be managed together in
+this resource group, and the the bot itself is the first one listed here -
+ShoutyBot. So we'll go and take a look at that and there's a number of
+pages here in this this blade that I can use to go and configure and work with my
+bot. The first thing I'm going to do is I'm going to go to this Build page here,
+and what that will let me do is access an online code editor. Now I can edit
+the code for my bot online in the browser, or I could work with it locally
+using in any IDE I like,  like visual studio or something like that; and I can
+download the code as a zip file and I can synchronize that, and even
+configure something called continuous deployment so I could have my code in a
+source control system and synchronize that with the actual bot online. Just
+because this is a demo, and it's nice and easy, I'm going to use the online code
+editor so we'll open up that
+and that takes me to this online environment. We currently don't have a
+readme file -  there's no readme file created for this one;  but what I can do
+is I can go and start looking at the code for my bot which is in this app.js
+JavaScript file. So we're gonna take a look at that. Now this obviously
+isn't a programming course, so we're not going to look in any huge detail at the
+code here, but there's some some basic code that's been put together for me to
+to work with my bot on the Microsoft Bot Framework, and here's
+the bit where the bot actually responds to  whenever we send in some sort of message.
+This is where the code to send the response is, and you can see it's very
+simple -  it's just one function that just simply says "You said" and it repeats back
+whatever it was that the user said to the bot. Now that's not terribly useful,
+so I'm going to make a a slight modification to it just to prove that I
+can. This isn't really gonna be any more useful, but at least we'll we'll see you
+do something. So we're going to change that to to uppercase, and as I do that
+you can see up here it says Saved - it's automatically saving my work as I go.
+So what I've now done is I've written the code so that whenever I say something to the bot,
+it's gonna shout it back to me in uppercase -  which is why I called it ShoutyBot.
+So we've done that we can now go and just close this code editor and go
+back to our bot in the Azure portal; and what I'm going to do is I'm going to
+test this bot in web chat, so we'll just click Test in Web Chat and when the
+bot's ready for me to test, I can just go and simply type a message...  and I get
+my response from ShoutBot  shouted back in uppercase -  hello. So you can see it's
+easy enough to create a very simple bot. Just simply create the settings in
+the Azure portal, and then I can make a minor modification to the code and I'm
+getting back this as custom message. What I could do now is deploy this bot
+as a web bot on on a web page for people to use, and I can see that if I
+look in Channels, there is this web chat code here and I can edit this channel
+here to get the secret keys and the code that I would require to embed that bot
+in a web page and make it available for people to use.
+So I very simply put together a bot, and deployed that using the Azure Bot Service

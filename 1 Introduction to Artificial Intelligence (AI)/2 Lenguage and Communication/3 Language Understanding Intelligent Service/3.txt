@@ -1,0 +1,39 @@
+So in the previous demonstration we created a LUIS app and published that
+as a service. Let's take a look now at how we can consume that app from a
+client. So previously I created my LUIS app and I published it to a production
+slot using this option here; and this is the endpoint that I've got for my client
+apps to connect to my LUIS app; and what I've done is I've copied that endpoint
+and over in my client code here. I've got some some Python code I have just pasted
+that endpoint in here, so that's the endpoint URL that I'm going to use to
+make an HTTP connection from my client app, which in this case is just this
+Python script and it's going to connect to my LUIS app, So what am I going to do?
+Well I'm going to connect and then I'm going to enter a command. So I'm
+going to get a prompt here to enter a command, which I'll type in, and then
+we'll send that command to my LUIS app. There's a little bit of code in here. If
+the command has spaces in it that's going to mess up the URL, so we're just
+going to replace those with a little plus symbol, so that they get encoded in the
+URL properly; and then we'll put that together. That's going to be our request,
+and then we will submit that to our endpoint and we'll get back the response.
+The response will come back as a string which we'll just decode -  it's actually a
+binary array - we'll decode that and it will load that as a JSON document, and
+then within that JSON document we're going to look for a top-scoring intent; and
+get the intent, and if that is Light On then we're going to display an
+appropriate image; if it's Light Off we'll display another appropriate image;
+and if it's something else entirely, we'll display yet another image. So
+that's pretty much the logic -  we send our command, we get back what the LUIS
+app says the intent is for that command, and from that we'll then take an
+appropriate response. So it's going to run this code and it's going to ask me to
+enter in a command. So I'll just enter one of our utterances to switch on the
+light, and I get back my response; and you can see there's a picture of a lamp here
+with with the light on. Now I said I entered switch on the light, and my
+utterance was switched the light on; but the word order made no difference -  it's
+still figured out that's the right command; and if I run it again we can
+try something else .We could say turn the light off, and back becomes an
+appropriate response, and we display an image here showing the lamp without the
+light on. So the light is off. So with this very simple example here, you've
+seen that we can build a LUIS app; we can specify the intents that are our app
+is going to have; we give some sample utterances for those intents; and we
+train the app; and then it's able to respond to requests from the client and
+send back the appropriate information about, well this is the
+intent we believe that the user wants and then the app can take the appropriate
+response based on that.

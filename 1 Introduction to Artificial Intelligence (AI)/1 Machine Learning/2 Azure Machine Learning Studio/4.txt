@@ -1,0 +1,118 @@
+Well, let's see what a classification model looks like
+in Azure ML.
+So here's my experiment in Azure Machine Learning Studio.
+And what I'm doing this time is I've got my diabetes data.
+So I've got details here of my patients who have been in
+the clinic and gone through the tests that we've given.
+So we've got all source of information there about
+the number of pregnancies that person's had, the plasma glucose
+level, diastolic blood pressure and so on.
+All sorts of different medical measurements there, and
+their age, and
+then the actual label that we're going to try to predict.
+Is whether or not this person is diabetic, it'll be a 0 or a 1.
+And I've also got another dataset here with the doctors
+for those particular patients.
+So if I take a look at that, I can see the PatientID and
+the Physician is here.
+And what I'm going to do is I'm going to just join those
+datasets.
+And I've joined them using the PatientID as the column that
+they join on.
+It's a left outer join, so we'll keep any diabetes records for
+people who don't have doctors, and
+we're not going to keep the right-hand key PatientID column.
+So got the join in place.
+Then I'm doing a math operation.
+Now when I analyze this data, you'll find that the age is
+actually skewed towards younger patients.
+So if we actually take a look at our join here, and
+take a look at the output of that.
+And I take a look at the age column.
+You can see that there's a big spike at the beginning of that
+column here.
+Most people are in the youngest age bracket here.
+So it's kinda skewed and
+that's gonna kinda interfere with the model.
+So I'm gonna create some, the log of that column, of the H
+column, in order to create a more linear relationship.
+So if I take a look at what we get out of that,
+We actually have the normal log of the age,
+it's still slightly skewed, but it's slightly better.
+There's a little more going on here, so
+we're improving that relationship with that model.
+Then just like we did with regression,
+we're going to scale these values.
+So again, when I've got things that look like a fairly normal
+distribution, I'm gonna use the Z score.
+And much of my medical measures here are kind of normally
+distributed, so we'll use a Z score for
+those, we'll use min-max for some of the others.
+And then my PatientID and
+the Physician aren't really very predictive.
+Just because somebody's got a unique number of an ID or
+some particular physician, that's probably not going to
+influence whether or not they've got diabetes.
+So I'm gonna ignore those.
+We're not gonna use those to train the data.
+And then we have the same pattern that we had
+for regression.
+We're gonna split the data.
+It's a supervised model so we'll split the data, and 70% of it
+we're gonna use to train, and 30% we'll hold back so
+that we can test and see how well our model performs.
+So for the actual training, well,
+I'm gonna use something called a Two-Class Boosted Decision Tree.
+And again, just like with regressions there are a number
+of different algorithms that we can use to train.
+And really sometimes you just have to experiment with some
+different algorithms and see which one works best for your
+particular data for the way that it's statistically distributed.
+But we're gonna stick with a Two-Class Boosted Decision Tree,
+it's a fairly well common, generally used algorithm.
+And we are gonna predict the Diabetic column,
+which was that 0 or
+1 value, so we're not predicting an actual numeric value.
+We're gonna predict something between 0 and 1 and then
+depending on where the decision threshold is, we'll classify it
+as 1, meaning diabetic, or 0 meaning not diabetic.
+So we've gone ahead and trained, and then we can score the model
+by looking at the test data that we held back.
+And seeing when we knew someone had tested positive for
+diabetes, we can see whether or
+not we predicted that they would test positive for diabetes, and
+then we can evaluate that with some metrics.
+So let's take a look at the output of the score model here.
+And as I scroll along, if I take a look at my scored labels,
+I've got 1, 0, 1, 1 and so on,
+so I can see there are really only two values 1 or 0.
+So that's the histogram for those.
+And here is the diabetic column, and
+I can see 1, 1, 1, 1, 0, 0, 0, 0.
+So as I scroll down that, I can see yes, it's actually looking
+as if we're pretty close to the mark on predicting those,
+we're doing pretty well.
+So just eyeballing it like that gives me an idea, but I actually
+wanna look at some performance metrics, so we'll go and
+have a look at the metrics for our classification model.
+And the main one that we're gonna look at is this ROC curve.
+So I can see that it goes all the way up the left and
+then all the way along the top,
+pretty much almost to the top right corner.
+So that's a very good indicator that the area under the curve is
+pretty much the whole of the square.
+So it's almost gonna be one,
+that means that we're predicting pretty well.
+And if I take a look down and
+I see the actual metrics, here's the metrics.
+This little section here is my confusion metrics, I got my true
+positives and my true negatives and those are nice big numbers,
+there are some false negatives and some false positives.
+So I'm not getting it 100% right, but
+they're certainly much lower than the true values.
+I'm getting an Accuracy of 95% and
+I'm getting a Precision of 93, a Recall of just under 93.
+And I can see my area under my curve here is basically 99%.
+So I'd think what we've got there is a pretty good model for
+predicting based on those medical measures whether someone
+is gonna test positive for diabetes or not.

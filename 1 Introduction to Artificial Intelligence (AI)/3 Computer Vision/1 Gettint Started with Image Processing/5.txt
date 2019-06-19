@@ -1,0 +1,40 @@
+So edge detectors use gradients to find contrast and pixel intensity when a mask
+is moved horizontally or vertically however to detect corners in an image
+you need to detect contrast in intensity in any direction the harris corner
+detector algorithm works by testing patches of the image the patch is moved
+in multiple directions and the pixel intensity is compared for each position
+now in a featureless area of the image there's no significant difference so no
+corner is detected now let's try the patch in an area that contains an edge
+in this case there is a difference in intensity when the patch is moved in one
+direction but not when moved along the edge so again there's no corner here now
+let's position the patch in an area containing a corner a movement in any
+direction results in a change of intensity so this looks like it might be
+a corner now the formula that underlies the Harris algorithm is a little
+involved it uses a little calculus and some matrix math but there are
+implementations of this algorithm in many languages including Python so let's
+take a look and what I've got is a function here that I've defined called
+corner_harr and I'm going to specify an image and a minimum distance and really
+the important thing here is from the the skimage library I'm importing the
+corner_harris which obviously applies the algorithm for finding corners and
+also something called corner_eaks and I'm really gonna use that just to kind
+of filter out all of the the kind of corners of lower magnitude so I'm left
+with the more prominent corners that are identified in my image so we'll go ahead
+and work our way through the image and then filter it was based on the distance
+that I've specified so the size of the corners now what I'm going to do here is
+is just simply pass in my equalized image remember I equalized the
+grayscale image earlier on will pass that in and then we're going to plot the
+results and we get back that that Harris result we're basically going to plot the
+image and we're gonna on top of that plot the corners
+that were detected by the the Harris algorithm so we'll just plot those as
+little red markers so that we can see where the coroners are so let's go ahead
+and run that and you can see that what actually comes back with the most
+prominent corners that have find are around the eyes we're obviously there's
+a corner as the corner of the eye meets the face and it's picked those out quite
+prominently so you can see that when it comes to looking at something like a
+human face this corner detection algorithm is actually very useful for
+finding that type of thing and of course it's useful in any other situation where
+you particularly want to find the corners of things so again we've seen
+that because our image is actually just an array of numbers we were able to
+apply these mathematical formulae and algorithms to in order to extract
+features and discern some sort of meaning from the images and that's
+really what AI technologies are going to do when they're processing images

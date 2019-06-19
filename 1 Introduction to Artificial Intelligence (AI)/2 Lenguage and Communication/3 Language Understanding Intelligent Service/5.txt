@@ -1,0 +1,51 @@
+So think about this.
+How often are you alive when the dawn of a new medium comes out?
+I knew that I had to be a part of VR because there are no rules for
+what VR should be.
+Starship Commander is a choose your own adventure VR narrative
+that uses natural language processing.
+So you can actually have a real conversation with the characters.
+>> I'm Sergeant Sarah Pearson.
+I've been assigned to your wing today.
+>> When we started making Starship Commander, we had to figure out,
+how do we get technology that can understand what a person is saying.
+So that we can have these new narrative experiences.
+We're science fiction game.
+We come up with new words.
+No off the shelf software could let us put in custom words.
+>> Who are the Ecknians?
+>> In our story, the bad guys are called the Ecknians.
+Every time we said Ecknian, you would come up with
+really weird words that were similar to other things that you would say.
+And so I would get confused all the time, so
+we needed to make sure that we could supply our own script.
+We started using Microsoft Cognitive Services to power the backend of
+Starship Commander.
+>> Looks cool.
+>> Once we plugged custom speech service into Starship Commander,
+I had tears in my eyes when I was playing it because it's like-
+>> My god.
+>> My god, this is it, this is the experience we want.
+>> Open the hatch.
+>> Voice print accepted.
+Welcome, commander.
+>> You can essentially put your script in there and
+it knows, these are the ways that people are gonna talk, and
+these are the phrases that they're gonna say.
+>> Cool, what's my mission?
+>> Must be something pretty important.
+>> And then the second thing too was the intent detection.
+With Luis, you basically give it a couple of statements.
+After you've given it a couple statements,
+you crunch it, and you start typing in your own statements.
+And it's shockingly scary
+how good it picks up even stuff that you didn't put in there.
+>> Computer, use autopilot and let's be on our way.
+>> Autopilot engaging.
+[MUSIC]
+>> I've never seen an opportunity like this.
+Where there's a wide open playing field,
+no one's written the rules yet.
+There's gonna be tons of amazing software out there and
+I just can't wait to see what other people write.
+[MUSIC]

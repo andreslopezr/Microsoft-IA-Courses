@@ -1,0 +1,59 @@
+video indexer is a cognitive service that brings together many of the AI
+capabilities we've seen so far in this course it's a great example of how AI
+can help automate time-consuming tasks like compiling and editing the metadata
+for video files so here is what the video indexer UI looks like I've logged
+into the service and I have already uploaded a video this is a video
+just taking an extract from one of the other courses that we we offer here and
+I've uploaded that and I haven't done anything to it other than upload it so
+if I go ahead and play it from here I
+can actually see some insights appearing over here on the left so it's
+automatically edited this I'm just gonna stop that and mute my volume so
+we're not interrupted by that but you can hear that it's a video is playing
+quite happily there and here's what the video looks like here over on the
+right-hand side you can see that there are the people in here so identified two
+different faces so it says there's that person and that person well this
+person here is my colleague Liberty so we'll just go and tell it that's the
+right name and this one here is me so we'll just go and tell it that's me as
+well
+but it has at least identified the faces in there for me so and now now I've told
+who those are those faces are it's also picked up some keywords it's picked up
+that this is from a stats course it's of course about statistics and it's picked
+up the keyword "statistical underlying methodologies" and it's picked up some
+sentiment from here so overwhelmingly if it analyzes all of the text in the video
+it's positive about 53 percent of the time in neutral about 47 percent of
+the time so so a reasonably positive video and I can jump to the bit of the
+video using these keywords here I can jump to the keyword where we talk about
+statistical underlying methodologies or to the bit where I talk about stats
+course so it's able to pick up those keywords as being important and let me
+jump straight to them in the video and I can also if I scroll the top here as
+well as looking at the people I can see that it's automatically generated a
+transcript for that video so I can see the transcript is generated and you'll
+notice that that includes this OCR is picked up the right at the beginning of
+if I click on that you can actually see it's got our names down here at the
+bottom of the video and it's picked that up it's read the OCR - it's used the
+optical character recognition rather to read that data and show me that that
+appears on the screen so it's got some pretty clever stuff of going through and
+generating that transcript and so on and it's generated that in English I
+could in fact just go and tell it that I would like to have that transcript in
+French and it will go and automatically translate that into French for me so a
+lot of the work that would be involved in working with a video and adding
+metadata to it has been done for me I can also a search throughout the video
+so I could search for the word data and of course it's searching in French at
+the moment so if we search in English for data let's try that it finds the
+locations where data appears in the transcripts and I can go and jump to
+that bit of the video automatically so I'm getting a really rich experience
+because the the AI service has been able to analyze that video and I can go and
+edit the insights that get phoned from here so I can see the the the different
+transcript in here I can go in and edit that transcript so I can see "it's not a
+fool on stats course" I wasn't really what I meant when I said
+that so I could go and edit that and say "it's not a full-on stats course" and we
+just make that change so I can go and edit that on the fly and then I
+could go and publish this video and make available and use all these insights to
+let people navigate through and find things in a video and all of this is
+available both in this a user interface and also as an API so I could I could
+write a piece of code that uploads a video automatically gets these insights
+generated and then downloads the the insights that get generated and is able
+to analyze those so a pretty impressive use of artificial intelligence to take a
+look at video and audio and do some text analytics and do all sorts of
+interesting things that we've looked at in this course in order to make life
+easier for somebody who needs to manage lots of video files

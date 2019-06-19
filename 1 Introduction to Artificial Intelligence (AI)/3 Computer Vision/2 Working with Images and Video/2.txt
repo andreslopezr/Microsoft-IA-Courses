@@ -1,0 +1,76 @@
+Sometimes you might need a more general solution that can not only differentiate
+between specific classes of object but begin to make sense of what's in an
+image you might need to be able to identify everyday objects of various
+types and maybe describe more complex scenes now possibly even read text in
+images the computer vision API is a cognitive service that's been trained
+using millions of images and has built an optical character recognition
+capabilities let's take a look now to use the the vision API you're gonna have
+to add a service in your Azure subscription I've already done that
+here's my vision service that I've added we add it just like any other cognitive
+service and if I look at that it has some access keys that I can use to
+connect to it from a client application so I've got my access key here and now I
+can go and write some code to work with that so I've set up the the URL this is
+a location specific so depending on where you provision it that URL might be
+different and then there's the key for your specific service so we'll go ahead
+and run that and we've got those variables populated ready to use them
+now the first thing I'm gonna do is I'm going to grab an image file which we've
+seen before I'm just gonna grab this down and display it so we can see what
+that image looks like and here it is here we got this this image of me and
+what we're gonna do is we're going to use the computer vision API to go and
+grab some features about that image so but like we did with our custom
+classification or a custom classifier that we built where we were able to grab
+some tags we're just gonna grab some tags from this now we haven't trained
+this this has been trained by by Microsoft that's been trained up with
+with millions and millions of images so there's a whole lot of information in
+here and what we're going to do is we're going to set up our headers so but put
+in it's an application/json content type so will pass up some
+JSON and we'll pass up the key so that we are we are authenticated and then
+we've got some parameters here and basically what we're saying is these are
+the things I want you to return I want you to return the categories the
+description and some information about the color and there are a whole bunch of
+other things I could specify as well but like that's really what I want to bring
+by bring by what would you categorize this image as give me some descriptions
+of this this image and what kind of color is is that what could sort of
+color palette has been used and I bring them bring those back in English so
+that's the language I want and then the body is just simply the URL that points
+to the image that I want to analyze so I'm going to make a an HTTP POST request
+to the vision v1 analyzed method passing in those bits of information and I'll
+get back the response and that response that comes back is JSON so we've go
+ahead and simply read that JSON and once we've got that we're able to go and
+get the image features for our image URL that's that's what this function is
+doing and then we're just going to display from the description the first
+of the captions that it's recommended so in other words the captured it thinks
+should go with this image so let's go ahead and run that and what comes back
+is a man wearing a suit and tie smiling at the camera which is a reasonable
+description it's wrong in one respect and that I never wear a tie but is you
+know I guess I can see why it would I would think that based on the jacket and
+so on so I can actually see what the full responses that came by we're just
+going to ensure this JSON that came back so you can see that the breadth of
+detail that comes I quite like this categories is people young which I'm
+very pleased about I'm not sure that's entirely accurate but I'm quite pleased
+about it and the the kind of accent colors the dominant background is gray
+that I'm the foreground is black that's the last before last is that kind of
+dark toned color is a black-and-white image no it's a color image and that
+comes back there's my caption the reasonably high confidence and here are
+the tags that it thinks are associated with that so person man suit
+building yeah I'm indoors neckties no not so much
+wearing smiling front posing jacket and so on so there's a whole bunch of
+interesting things in there and a little displeased about the older and old but
+I'm prepared to overlook that so it's it's gone and it's also just a metadata
+about the image the JPEG it's a JPEG and that the
+size of the image and so on now let's try that with a slightly different image
+I've got an image here of a ukulele so we're going to grab that and well it's a
+close-up of a guitar which I guess for people who don't understand the
+differentiation between the guitar and ukulele might be fair enough it looks
+like a close-up of a guitar that seems like pretty reasonable approximation I
+hope it's something a little bit more complicated and I'm having moved to the
+states from Scotland obviously a big fan of what we in Scotland call football
+and what the Americans call soccer so I've gone to see the the local football
+team here and taken some pictures let's see what the vision API makes of that
+and actually what we've got is a crowd of people watching a football game which
+is pretty accurate that's exactly what light is so it's able to identify
+there's a crowd of people there it's able to identify there's a football game
+going on here the goals probably helped it so we've we've trained these images
+or Microsoft has trained these images using millions and millions of images to
+actually give you some fairly accurate and fairly useful bits of information
+back just by simply analyzing the image against that API

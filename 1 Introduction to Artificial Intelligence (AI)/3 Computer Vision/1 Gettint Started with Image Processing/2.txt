@@ -1,0 +1,43 @@
+Now because an image is actually an array of numeric values the distribution
+of these values can tell you something about the range of colors or shades the
+image contains or the objects that are in it you can plot these as a histogram
+to see the distribution of values and you can also use a cumulative
+distribution function to see how the pixel values accumulate each point on
+the y axis shows the frequency of all the values up to and including the value
+on the x axis now for image processing is usually good to have a relatively
+even distribution of pixel values a markedly uneven distribution can
+indicate there are extremes of contrast in the image that need to be equalized
+so you can normalize an image to equalize pixel distribution and the CDF
+for a perfectly equalized image is basically a straight diagonal line let's
+take a look at examples of normalizing an image using Python and the first
+thing I'm going to do in my Jupyter notebook here is I'm going to create a
+histogram with 256 bins so and for all of the the different possible values in
+my my pixel intensities and what we'll just create a histogram so that we can
+see what the distribution of those values looks like and here's the the
+distribution of those values so if we're going to remind ourselves here's the
+image and here's what the distribution of the different kind of shades of gray
+in that image are looked like so they're kind of peaking around here there's a
+peak at the beginning then there's another peak in the middle and it's a
+little bit kind of up and down it's really uneven that distribution now
+another thing we can do is we can use this cumulative distribution function a
+CDF and basically that just shows me that the distribution for all the values
+up to this point so I get a kind of cumulative view of there
+the values so we're go ahead and run that and in a perfectly and normalized
+image that would be a perfectly straight diagonal line and you can see that it's
+not it's kind of bumping up here and it's got some curves at the ends and so
+on so we have a fairly unevenly distributed
+of values in that distribution of pixel values and what I might want to do in
+order just to simplify processing of that I might want to equalize it
+that unevenness at the moment might indicate that there are some issues with
+contrast in the in the video so I might want to equalize out the contrast and
+and try and get a I'm working a simple set of numbers to work with
+so to do that I've got this function here so let's go ahead and run that and
+here's what the equalized image looks like you can see actually the contrast
+has been raised a bit so we've got a really kind of bright and center bit
+here and and it's a bit more even in tone and if I go and have a look at that
+as the histogram or the CDF what we should see is well there's still some
+spikes here but I can see it's much more kind of level in the middle here so it's
+a more kind of equal distribution of values across there and I have a more or
+less diagonal straight line for my CDF so I've certainly equalized out the
+values in the histogram and that may well make it easier for me to work with
+those values and try and extract some features

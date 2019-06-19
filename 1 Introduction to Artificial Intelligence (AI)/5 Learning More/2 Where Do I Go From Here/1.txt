@@ -1,0 +1,8 @@
+Well I hope you've enjoyed our little exploration of artificial intelligence
+remember though that this is just the first step on your journey if you're
+inspired to learn more this section of the course includes some resources for
+you to go further maybe you're not developer who wants to learn how to use
+cognitive services to integrate AI into your applications or maybe you want to
+dive into machine learning and explore the deep learning techniques that are
+emerging to take AI to the next level AI brings exciting opportunities to work on
+world-changing solutions so who knows what you could do

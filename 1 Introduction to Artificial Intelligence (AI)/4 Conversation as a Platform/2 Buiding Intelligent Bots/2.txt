@@ -1,0 +1,75 @@
+Well we've seen how to create a basic bot and how to use the Microsoft bot
+framework to allow users to connect to that bot over multiple channels; but the
+bot we've created isn't all that useful. Really what we need is some sort of AI
+service behind the bot that's going to provide something of value that users
+actually want to work with. So we're going to create a very simple example
+using a cognitive service called the QnA Service. Let's take a look at how we
+can do that. so here I am in the QnA Maker website, and this is the portal
+where I can use my QnA service to create knowledge bases that I could use in my
+bot. So I'm going to take a look at creating a new knowledge base, and
+there's a three-step process for this, and the first step is I need to create
+an instance of the QnA service in my Microsoft Azure subscription. So we'll go
+ahead and do that will click create QnA service and it opens up another tab and
+logs me into the Azure portal ;and then I can go ahead and create a new Q&A maker
+service. So we'll give it a unique name I'm going to call mine QnAJokes
+because it's gonna contain a knowledge base with some fairly terrible jokes -  I
+do apologize for that. And I'm gonna choose the subscription I want to create
+it in and the management pricing tier for for hosting that service; and I'm just
+going to choose the free tier for that so that that's gonna allow me to develop
+it. We'll have some restrictions but it lets me develop it for free. And we'll
+create a resource group for that we'll just call that QnAJokes and we will
+also have to choose the search pricing tier. We have a separate pricing
+tier for when the knowledge base is searched; and again I'll just choose the
+free tier for that because that'll do it for developing it. we'll store it in
+the West US data center and then we need to create our a web app for
+this - an Azure app for that for our QnAJokes. You can see that that name is
+already taken - there's already a website with that name; so we need to
+give it a slightly different name so we'll call it
+QnAJokes123. We'll just stick an extra bit of code, or number onto that;
+and then we got a little green tick here that tells us that's okay. That one's not
+already used. So we can go ahead and use that, and we'll store that website in the
+West US and we'll have some app insights so that we can analyze what's
+going on with this service, and we'll store those in a central - might as
+well just use the default location. So I'll go ahead and click create, and it'll
+validate those settings and then it will go off and provision my QnA Maker
+service and the web app to host it... and then when my QnA service has been
+deployed I can go back to my QnA Maker here, and I'm just going to refresh the
+page so that we get all the information about the QnA Maker that we actually
+have deployed, and it's going to list the the QnA services that I have available
+to me here. So step two is connecting our knowledge base that we're
+about to create to the QnA service we've just deployed, so I'm gonna use my
+Microsoft Azure directory ID I'm going to specify the subscription in which I
+created the service, and then there's my QnAJokes QnA service that I created. So
+I'm creating a new knowledge base that it's gonna service that QnA service and
+then I need to give this knowledge base and name so we just call this joke book,
+and there it is. Now I'm ready to go and populate my knowledge base and if I had
+an existing FAQ site on my website or if I had a file with FAQs I could
+go ahead and and use those to populate it, or I could go ahead and just create
+my knowledgebase manually myself; which is what I'm gonna do. So we'll say
+create your KB, and we're ready to go and start creating the questions and answers
+that we want to have in our knowledge base. Now initially there's nothing in it
+so we're gonna go and add a QnA pair and my question that I'm gonna ask is why
+did the chicken cross the road, and the answer that goes with that is to get to the other side.
+So we got our our response there, and I'll go ahead and add another QnA pair so I
+could have a question like what's red and invisible, and the answer to that one is no tomatoes and
+then finally I'm going to add something here so that when somebody first
+interacts with the the knowledge base they're gonna say hello and the
+response that is gonna be hello; so it's not really a question answer it's
+just a way of interacting and getting an appropriate response. So we've got those
+values added in there I'll go ahead and  save and train the knowledge base. So
+after it's been trained I can go ahead and test it and, I can just simply type
+in a message hello and I get back to the appropriate response hello. Why did the
+chicken cross the road,
+and I get back the appropriate response to get to the other side; so my knowledge
+base is working. I'm getting back the appropriate responses. That all seems
+reasonable so I'm ready to go and publish this rather simple knowledge
+base so that I could use it in a bot or an application. So I'll go ahead and click
+publish, we'll just hide this test window, and to publish it it's going to move the
+QnAs from the test index into a production index so that we can
+actually access it from our bot that we're going to create. So we'll go ahead
+and publish, and that goes and deploys my knowledge base into my QnA maker web
+service. We can actually see a sample request that we would use to go and
+connect to that and use it, and it's got various bits of information, various keys
+in this URL that we're going to need when we try and connect a bot that we're
+going to build later on to the service. So we'll come back to that in the next
+demo.

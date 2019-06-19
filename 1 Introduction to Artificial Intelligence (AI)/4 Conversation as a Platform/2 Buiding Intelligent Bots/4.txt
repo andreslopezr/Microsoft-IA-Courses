@@ -1,0 +1,89 @@
+>> Personal assistance like Cortana,
+an increasingly popular way for
+people to keep track of information,
+and automate tasks, and all that kind of thing.
+These AI powered assistants can
+learn about the things that we care about,
+and they can help simplify our daily lives.
+Now, you can connect a bot that you've
+published with the bot framework to Cortana as a skill,
+and that enables users to interact with
+your bot through the Cortana interface.
+So, here I am looking at my BadJoke bot,
+that I've created in my Azure portal,
+and what I can do is,
+I can look at the channels through which this bot is available,
+and I can see that currently it's available through Web chat.
+I could use that to create a website that contains
+an interface much like the test interface that we've seen here,
+where people could just simply type
+their questions and have them answered.
+But what I want tlo do is to add a second channel to
+this bot that enables people to access it through Cortana.
+So, there is a Cortana option here,
+I'll just click that, and I get some information
+about how to configure this bot to work with Cortana.
+There's a number of different options
+here because I'm just testing and debugging this.
+Initially, it's only going to be available to Cortana through
+my own personal Microsoft account,
+and then once I'm happy with that,
+I can make it available to everybody who wants to connect with it,
+and I can also while I'm developing it,
+run it in debug mode.
+So, I can see some additional debug information.
+But I'm not going to bother with that,
+we'll just keep it nice and simple,
+and I'll go ahead and I'll leave the icon
+with the Default icon and just change
+the Display Name and the Invocation Name.
+So, we'll change the Display Name to Bad Joke Bot,
+and we'll change the invocation Name too Bad Joker.
+So, we've got a couple of different options there.
+I could Upload a custom icon,
+but I'll just use the default one.
+I'm not going to have
+any additional authentication to
+connect through to My Back-end Service,
+In this case we're connecting through to
+the Q and A maker service.
+So, I don't need any additional authentication to happen.
+If I did, I could add the option there
+to have Cortana manage the authentication,
+but all I'm going to do here is just simply go ahead and
+deploy that on Cortana,
+and so the default settings have been saved.
+So, we're ready to go and use this bot with Cortana.
+So, we can actually just go to my Cortana Interface down here,
+and I could type in, or I could actually speak to Cortana.
+So, we'll try speaking using
+the Invocation Name that we've specified.
+Ask bad Joker why the chicken crossed the road,".
+>> May I have your permission.".
+>> So, you can see the first thing that happens is,
+this is identified as being a bot,
+that we're going to connect to,
+and it's called the right name Bad Joke Bot,
+that's the Default icon,
+the little face there,
+that's made out of those characters.
+But the first thing we need is permission to connect.
+So, we'll give Cortana permission to connect on my behalf,
+and we get back our response to get to the other side.
+Now, I can continue to use the bot,
+I don't have to speak, I could just actually type in.
+So, if I type in my default, " Hello",
+I'll get back from Bad Joke Bot, "Hello",
+and I could go ahead and ask another question.
+So, I could again use the voice command.
+"Ask Bad Joker, what's red and invisible",
+and I get back my answer, "No tomatoes!"
+So, we've taken our bot,
+our bot was connected to the Q and A maker.
+So, we've got some sensible information
+there that we can get back when we ask the questions,
+and then we've connected that bot to Cortana.
+So, now I can interact with my bot through the Cortana interface,
+and take advantage of that personal assistant,
+that's going to understand my needs and be able to
+get information from lots of different sources.

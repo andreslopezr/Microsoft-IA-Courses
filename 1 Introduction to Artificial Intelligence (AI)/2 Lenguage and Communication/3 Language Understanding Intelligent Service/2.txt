@@ -1,0 +1,82 @@
+So in the previous demonstration we saw how to provision the LUIS service in
+our Azure subscription. Now I want to actually go and use the the LUIS portal
+to create an app that has intents and entities and all the things that I need
+in order to give me that language understanding. Well previously I created
+a LUIS resource in my Azure subscription and then I followed the link from that to
+this LUIS App portal where I can create my LUIS app. So the first thing
+I'm going to do is is create a new app, and that's going to ask me for a name for
+this app, and I'm going to call this Home Automation; and we'll have this in
+English -  that's the language that this app is going to speak; and I could add a
+description as well; and then when I'm done I'll just click Done and create the
+new app. So here's my app. It's called Home Automation, and if I just go ahead
+and open that up. You can see that I get this UI within which I can work and
+create and test my app. Now the first thing I'm going to want to do is to
+think about the intents in the app. So I'm going to create an intent. So on the
+Intent tab here, we'll click Create New Intent, and we'll give this a name; and
+this app is going to turn lights on and off effectively is what it's going to do,
+so one of my intents is to turn the light on; so we'll just call it Light On;
+and that goes and creates an intent called Light On; and I'm ready to start
+adding utterances that are going to be the way that people will try and initiate
+this intent. People will signal that that's the intent that they have. So I
+could put in multiple samples. Just for the sake of simplicity, I'm going to put
+in a one simple example here - switch the light on. So we've got an utterance
+here of switch the light on, and that's going to signify the light on
+intent; and what I'm going to do is I'm going to highlight the word light here.
+You can see it puts these little square brackets around it, and I can use that to
+signify that this thing is an entity and I could go and browse some pre-built
+entities or I could create a new entity. So I'm just going to create a
+new entity called light, and that creates this new entity called light. it's a
+simple entity. That are more complex entities that I could create, and as you
+explore LUIS in more depth you'll find uses for these more complex entities; but
+in this case we have a simple entity called light, and I can see that that's
+now highlighted as being an entity that I've got in my utterance here. So I've
+created this intent of light and I've created an utterance for that. I could
+create multiple utterances but in this case I've just created one; and I've
+specified that this light thing here is an entity. I'm going to go back to my
+intents and create a second intent here,
+on the basis that if I want to turn the light on I might also want to turn it
+off; and again we'll just put in an utterance,
+and again we'll specify that light in this case is an entity; but it already knows
+about the entity called light, so that's listed for me.
+So we'll just go and select that and then that's another instance of that
+entity. So I've now got a couple of intents -  very simple intents. Each intent
+has one utterance that tells us that that intent is what we're wanting
+to do; and we specified that the word light in those utterances is the entity
+that this intent relates to. So what I'm going to do is I'm going to go ahead and
+train this app so that it knows about applying those those utterances to those
+intents. And once it's trained I can actually test it, so we'll bring up this
+little test window here and we'll type one of our utterances, and it comes back
+from that with the suggestion that this is for the light on intent. So that's the
+intent that it reckons that one means. and I can actually even try text
+that I haven't typed in for the utterance; so I could try something like
+this: turn the light on, and again it comes back with light on, and the one
+there indicates it's 100% confident that that's that's what I meant; so even
+although it's that's not the exact utterance that I originally specified,
+it's smart enough to realize that that's close enough to what I presumably
+mean. So I've now created my app. I've added my two intents. I've created
+the utterances for those intents, and identified the entity; and I've tested
+that. I'm now ready to go and publish this, so if I click on the publish tab
+here I've got the option of publishing this to a production slot or to
+staging; so in this case I'm going to publish it to production, and I'm just
+going to look at what I want to do with that in terms of resources and keys. Now
+there's a key here already - there's a key in the West US region here that's generated.
+When I created the app, this key was generated for me to test it with. So
+there's a test key that I can use there. Now if I'm actually going to publish
+into production, then what I probably want to do is use a key from my Azure
+resource that I've created for LUIS. so I can add a key and I select the
+GUID that's associated with my Azure subscription user account.
+In this case that's that -  it will only list the ones that you have, so when
+you're logged in it will figure out which are your Azure tenants; and
+once we've got that, I can then select the subscription. I've only got one
+subscription so we'll select that, and then within that subscription I've got
+that luis012345 key that I created earlier. Now that of course is an F0 key
+so it's still restricted. it's just the same as the one that was generated with
+the app would be; but if I had an actual production key in there I could select
+that key, add that to the app, and then what we'll find is down here, I've now
+got this app associated with both of those keys; and that way I can put it
+into production, and use the appropriate endpoint for the key that I want to bill
+the service against; and that will allow me to put that into production using a
+production level key. So you can see here that what I've got is this endpoint, and
+that endpoint is what the client application will use to connect to my
+LUIS app in order to initiate these intents; and that's something that we'll
+look at in the next topic.

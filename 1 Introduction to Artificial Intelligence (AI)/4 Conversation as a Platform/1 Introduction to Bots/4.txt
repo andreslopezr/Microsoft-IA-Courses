@@ -1,0 +1,9 @@
+So we've seen how to create a simple bot using the Bot framework and we're ready
+now to try and use that through various different channels so here's my shouty
+bot that we created previously and we've already had a look actually at the web
+chat channel where I can get the code to embed that bot into a web page
+there's a whole bunch of other channels l could use as well - there are
+channels for things like Cortana or for Microsoft Teams or Skype or Bing or even
+by email so I could use any of these options here to create a way for users
+to communicate with my bot in the way that they would communicate with with
+other people, like for example by sending a Skype message or making a call

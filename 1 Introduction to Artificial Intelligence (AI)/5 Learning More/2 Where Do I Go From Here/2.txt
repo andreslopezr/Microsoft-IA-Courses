@@ -1,0 +1,38 @@
+Linguistic Aalysis
+https://docs.microsoft.com/en-us/azure/cognitive-services/linguisticanalysisapi/home
+
+Text Anaylisis
+https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview
+
+Bing Speech
+https://docs.microsoft.com/en-us/azure/cognitive-services/speech/home
+
+Translator
+https://docs.microsoft.com/en-us/azure/cognitive-services/translator/translator-info-overview
+
+Language Undestanding Intelligent Services (LUIS)
+https://docs.microsoft.com/en-us/azure/cognitive-services/luis/home
+
+Custom Vision
+https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/home
+
+Computer Vision
+https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/
+
+Face
+https://docs.microsoft.com/en-us/azure/cognitive-services/face/
+
+Video Indexer
+https://docs.microsoft.com/en-us/azure/cognitive-services/video-indexer/video-indexer-overview
+
+Building Bots
+https://mva.microsoft.com/en-US/training-courses/getting-started-with-bots-16759
+
+The Microsoft Bot Framework
+https://dev.botframework.com/
+
+QnA Maker
+https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/home
+
+The Cortana Skills Kit
+https://docs.microsoft.com/en-us/cortana/getstarted

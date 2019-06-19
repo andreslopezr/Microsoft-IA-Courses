@@ -1,0 +1,44 @@
+The language understanding intelligence service, or LUIS, is a cognitive service
+that you can use to implement natural language processing for applications
+that need to respond to human communications. Now we interact with
+LUIS through utterances -  fragments of language that need to be interpreted, and
+from these utterances LUIS identifies the most likely intent - a predefined goal
+or action for the input. In this case the utterance is mapped to a book flight
+intent. Now the intent is applied to the entities that are identified in the
+utterance -  in this case the utterance include a location entity, New York; and a
+date-time entity, this weekend. To start using LUIS you need to provision it as
+an Azure service. Now we provision the language
+understanding intelligence service just like any other cognitive service in
+Azure, so we'll use our Azure portal to do that. So here I am in the Azure portal
+and I'll just go and add a new resource just the same way as any other type of
+resource; and again I can either go and browse for it or I can go and search for
+what I'm looking for. In this case I'm looking for LUIS and we find the
+language understanding service in here. So we'll go ahead and create an instance
+of that, and we'll just go and read the information and then click Create; and
+then I'm ready to specify a name for my LUIS service. So we'll just put in a
+name and we'll just wait to get our little green tick of happiness to tell
+us that we can use that, and then I'm going to specify the subscription in
+which I want to create this LUIS service and that's going to be in my
+existing subscription. I can choose the location of where I want to deploy this,
+which of the data centers, I'll just leave it in the East US; and I can select
+the pricing tier that I want to use to pay for the use of my LUIS service. Now
+the F0 free service is is fine for just testing or just building
+something as you develop it. When you put in production you're probably going to
+want to put it into the S0 tier, which doesn't have the restrictions on
+it that the free tier does -  the free tier is limited to 10,000 calls per month.
+In this case I'll just choose the free tier and we're ready to go. Now I'll choose
+the resource group that I want to manage this resource within, and I have an
+existing resource group for my cognitive services so we'll just go and put it in
+there. I've read the information and I'm ready to go and create the LUIS
+service, so it goes and validates those settings and it will then start to go
+and create that resource, that LUIS resource that I'm creating; and it'll
+deploy that into my Azure subscription. When the deployments complete I get
+a little message and I can go and have a look at that resource; and I'll just
+close that pane there, and I can see some information about my my LUIS
+service. Now there's a few bits of information in here. There are some keys
+like there are with with all the services that we've looked at so far, and there's
+some information about how to make an API call -  I can see the documentation
+there; and there's also this link here to something called the language
+understanding portal; and if I click that link it'll open up in a new page and it
+takes me to this web site where I can use this portal to create my LUIS
+app; and that's what we'll look at in the next topic.

@@ -1,0 +1,176 @@
+>> Up until now we've focused on parsing text,
+but of course natural language includes speech.
+Now to work with speech,
+we have to recognize that there are
+two models that need to work together.
+First of all, there's an acoustic model that maps
+audio to sound units or phonemes,
+which define how specific word fragments
+are pronounced in a given language.
+Then there's a language model that provides
+a probability distribution across a sequence of words.
+So, while in this case,
+it may sound like we're trying to
+communicate something about fruit, boats,
+and furniture, it's much more
+likely that the message is about satisfaction with a seat.
+Let's take a look at some real examples of
+using speech in an AI application.
+Well, here I am in the Azure portal and
+I've actually already created an instance of the speech service.
+You can create it pretty easily just by creating
+a new resource in your Azure subscription and searching
+for "Speech" and you'll find this "Speech" option from
+Microsoft here that you
+can create with a name and a location and pricing tier,
+not all the things that you need when
+you create one of these resources.
+But we've already got one created here,
+so we'll just go back and look at that.
+A couple of things that we need,
+couple of bits of information we need,
+if I look at the overview page,
+I can see the end point where I've
+deployed and there are different regions available.
+So, I've deployed this in the West Europe region.
+So, I'm going to need to know that,
+I need to know where I've deployed it.
+I'm also going to need my access key
+for connecting to this service.
+So, that's the two bits of information I need to write some code.
+Now there are a whole bunch of ways that I
+can write code that uses the speech server,
+there are SDKs for languages like C sharp and Java.
+I'm actually going to use Python and rather than an SDK,
+I'm going to take advantage of the fact that
+there is a rest interface,
+a rest API that I can use.
+So, I can just send JSON messages across
+HTTP from any language that support
+reading and writing JSON and
+sending HTTP requests and processing their responses.
+So, I can do that in Python.
+I'm just going to assemble my HTTP requests
+and send the JSON that I need to send across.
+So, the first thing you need is the key and the region.
+So, we've already ascertained whether those are I'll
+just run that code and set those variables up.
+Now, I'm ready to go and use my speech service.
+Now, what I'm going to do first of all,
+is I'm going to go from speech to text.
+I'm going to send some speech and have it
+transcribed into the text that is interpreted from that.
+In this case I'm going to use a wav file that
+contains some existing audio.
+I could just use a microphone if I
+were in the mode to write all the Python code I would need
+to do to read from the microphone but in this case it's
+easier just to take a wav file with some text,
+it is same thing in the end.
+We'll go ahead and run that and we'll just have a preview
+of what this audio sounds like.
+>> The rain in Spain stays mainly in the plain.
+>> So hopefully, you can hear that okay,
+the voice is saying,
+"The rain in Spain stays mainly in the plain."
+What we want do is take that speech and convert it to text.
+So, to do that, there is a little bit of
+a complication with using the speech service.
+We're obviously going to load that file.
+So we'll read that file into a binary format
+that we can send up to the service but before we can do that,
+we need to get an access token.
+Now we've already got the subscription key
+and we've got the region where the service is deployed.
+So, I can connect to the endpoint at that region,
+here it is here,
+and use this issue token message,
+passing up my speech key in the header of the HTTP request.
+When I pass the app,
+I'll get back an access token that is valid for 10 minutes.
+So, my code can then use that for
+subsequent calls to the speech service.
+So, we run that code to get our token and then we're ready to
+actually go and use the speech service
+to convert the speech to text.
+To do that, we are going to take our access token,
+that's going to go in the header of the requests that goes up.
+The request is going to this speech region,
+that's regionally specific where we've deployed her service.
+STT, speech to text in other words and speech.microsoft.com,
+right the way through the end of that URL.
+So, that's the endpoint for the service that's going
+to actually do the speech to text.
+The headers tell it what the content type is.
+It's an audio wav file.
+We can specify the codec and the sample rate and
+the authorization is the access
+token that we obtained with our first call.
+So, a little bit complicated and make one call to get
+the access token and then a
+second call to actually use the service.
+We're also going to pass up in the parameters of
+the language and we're telling it that
+the speech that we're sending up is in English US.
+Because obviously if it's in a different language is going to
+impact the way that the service converts that to text.
+So, we'll bundle all of that together into
+a request and we'll post that up to our service.
+What we'll get back is some text.
+That's actually in a JSON document,
+so we'll load the JSON document and within that JSON document,
+there's a display text value and that display text
+is the text that's been
+transcribed from the audio that's been sent up.
+So, if we go ahead and run that code,
+sure enough we get back the results,
+"The rain in Spain stays mainly in the plain".
+So, we've got back the right response
+based on the audio that we sent.
+Well, that's fine, that's speech to text.
+What about the other way around?
+What if I want to take text and convert that into
+speech and again I can do that using the service.
+So, in this case,
+we're going to have an input that just lets us type
+in any phrase that we want to convert into text.
+We are going to do the same as we did the last time,
+we've actually already got a valid access token but we can
+imagine this was maybe more than 10 minutes later.
+So, we're going to go up and get another access token.
+So, we do that same call we did last time.
+Then we're ready to actually use
+the service to convert our text into
+speech and text into speech actually works slightly
+differently in that what we pass up to this TTS,
+text-to-speech endpoint is an XML values,
+it's an XML document that tells everything we need to know about
+the text that we want to convert to
+speech but also how we want that speech to work.
+What's the language?
+What's the voice type that we want to use?
+So, we'll send all that up.
+We got our access token there as the bearer.
+The request body is this XML body here,
+so we're using the speak object,
+we're specifying the voice we want,
+we want an English US female voice
+and that's the specific name of the voice that we want to use.
+There's a library of different voices we can have.
+So, that's the one we want to use.
+We're passing up some text that I'm going to type in.
+When we post that up,
+we should get back a response,
+and the content of that response is the speech file,
+maybe the speech data that we want to actually listen to.
+So, if I go ahead and run this cell,
+it's going to prompt me for something to say.
+So, we'll say, "Peter Piper picked a peck
+of pickled peppers", we'll just enter that.
+>> Peter Piper picked a peck of pickled peppers.
+>> We get back the correct response.
+It's correctly interpreted the text that I
+typed and returned that as speech.
+So, when I'm able to go both from speech to text,
+so we can have speech be transcribed into text and we
+can take some text and have that converted into speech for us.

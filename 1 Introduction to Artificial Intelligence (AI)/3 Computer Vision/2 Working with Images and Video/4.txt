@@ -1,0 +1,42 @@
+So up till now we've considered how to work with static images and there's a
+lot that we can do with that however the world is in motion and video is becoming
+a more prevalent media format on the web and in general here's a short video of
+our robot kicking a ball now in reality this video is really just a stream of
+static images known as frames and they're encoded in a format specific
+codec and encapsulated in a container which also includes a header with
+metadata about the format duration and so on now to take a look at working with
+some videos we're just going to run some very simple Python code that is gonna
+grab a video play it and take a look at the frames that are in so let's take a
+look at that I'm here in my Jupyter notebook and I'm gonna first of all
+install this library called AV and that's really just gonna help me work
+with with video file so we get that installed and with that package
+installed we can now start to do some stuff with videos and I'm gonna grab a
+little video file it's a very small video file that we use for intros
+and outros to videos in these types of training courses so I'm gonna grab that
+and download that locally and once I've got that downloaded we'll just play it
+in here so that we can see what it looks like and it's a very small video that
+basically just shows the Microsoft logo being animated like that okay so that's
+our video we've got that downloaded let's take a look and particularly what
+frames are in there so I'm gonna use the AV package and I'm going to open up that
+video and then all I'm really gonna do is go into the container remember that
+the videos are contained within the container so we're go into the container
+and we'll add decode the first of the video codecs that we find in there so
+we'll grab that video codec that will give us the frames and we're just going
+to go through for each frame that we find in that we're gonna check to see if
+the index is number 25 so in other words before trying to find the 25th frame in
+the video if we find out then we're gonna just
+take that frame and convert it to an image just so that we can see what that
+frame looks like and display that but otherwise we're just gonna keep counting
+through the frames and then once we get to the end of that list of frames we'll
+take the freemen day it's the one that we're currently at and we'll subtract
+one because the frame indexes start at zero so we'll subtract one and that
+should tell us how many frames were in the video now obviously this is a very
+small video so that'll work for a larger video this is probably not the most
+efficient way to count the frames in it but you can see that when I run that
+it's able to run through it finds 111 frames in the video and this is what the
+25th frame looks like we've got this image here so from this little demo
+here you can see really that a video is a container that contains a codec and I
+could it contains that the frames for the video and that we're able to go and
+separate those frames out and frame the individual frames and display them as
+images and that's really going to be the basis of a lot of the work we're going
+to do with that with videos

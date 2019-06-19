@@ -1,0 +1,45 @@
+Sometimes the images you need to work with may contain noise, often referred to
+his salt-and-pepper or scatter and this can make it difficult to detect features
+in the image because the noise obscures the details you can denoise an image by
+applying filters for example a Gaussian filter works by defining a patch of the
+image and determining the intensity value for the center pixel based on the
+weighted average of the pixels that surround it with coarser pixels having
+greater weight than more distant pixels so the average value is assigned to the
+center pixel and then the patch is moved and the process repeated until the
+entire image has been processed the Gaussian filters often produce a
+blurring effect because the average of the pixel intensity even in areas of the
+image where there are contrasting shades that define edges or corners so as an
+alternative a median filter works in the same way as a Gaussian filter except
+that it applies the median value to the center pixel this approach can be better
+for removing small areas of noise in detailed images as it tends to keep the
+pixel values that are in the same area of the image alike regardless of how
+close they are to a contrasting area let's take a look at a real example
+so in Jupyter here's some code here I'm basically gonna add some noise to my
+image so the code to do that I'm basically just generating some random
+noise and and using a kind of Gaussian blur to add a bit of noise to that so
+let's let's run that and here's what that image looks like so this is
+something you might get from a low resolution photograph maybe taking in
+poor light or something like that we get some some salt-and-pepper noise in the
+image now if I've got that image I might want to apply a filter to that in order
+to connect clarify and clear out some of the the noise and one approach I might
+take is this idea of a Gaussian filter or basically I'm applying an average to
+a pixel as I move a mask across the across the the image so in this case I'm
+going to create a mask that's ten pixels in size and we'll go and run that mask
+across there and I'm using from the and skimage library here I'm just
+importing the Gaussian filter here so we're gonna run that and here's the
+result it's pretty blurred it's removed the noise certainly but it is perhaps a
+bit indistinct as what's actually in the image now if I was trying to extract
+features from this if I'm looking at this as a computer then actually that
+might be perfectly useful to me because I can see some really obvious features
+there are the eyes the nose the mouth and the t-shirt under the jacket so I
+can you know see how that this may be useful to a computer but for me as a
+human looking at that that looks a bit blurred so I might want to take
+something that's a little less dramatic than that and apply something like a
+median filter where rather than taking the average I'm taking the median value
+and again we've got the the size of the the mask set to ten there
+we're just important them the median filter and run that and this time I I
+get my picture by now has removed some of the noise we could just compare that
+to the original noisy image here so we can see there's a lot of kind of and
+speckled bits of noise in there whereas here there's a bit less of that it's
+still a little blurred but it's certainly a cleaner image we can clearly
+see what it is and we've cleaned it up and removed some of the noise

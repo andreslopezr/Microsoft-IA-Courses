@@ -1,0 +1,9 @@
+so we've seen how to build a basic bot and connected to a channel however to
+make your bot useful you're going to need to put some sort of intelligence
+behind it you can integrate your bot with cognitive services to understand
+natural language as text or speech or to analyze images or videos or maybe to
+search the web for relevant information or provide specialist information and
+advice based on a knowledge base and of course you can combine these
+capabilities to create sophisticated conversation based AI experiences the
+break out of the constraints of an app and enable a natural way for users and
+software to work together

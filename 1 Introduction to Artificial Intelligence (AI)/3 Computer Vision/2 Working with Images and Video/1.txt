@@ -1,0 +1,217 @@
+>> Well, we've looked at
+various ways to process images and extract features from them.
+Hopefully, you've seen that to a computer,
+images are just numeric arrays on which
+mathematical and statistical operations can be performed.
+That means that we can apply
+similar Machine Learning techniques to
+images just as we do to any other data.
+So, I'm in the site for
+the Custom Vision and Cognitive Services, customvision.ai.
+By default, once I've signed in,
+that's taking me to a project's location.
+So, I can create projects here,
+where I'm going to upload
+some images and train some image classifiers.
+So, let's start by creating a new project. We'll give it a name.
+We'll just simply call this Produce,
+because it's going to differentiate
+between different types of fruit and veg.
+We can give it some sort of description.
+So, "Fruit and veg classifier".
+I can choose what Resource Group I want to deploy this.
+I could actually associate this with
+my Azure subscription and deploy it as an Azure service there,
+or I can have this kind of stand alone limited trial where I
+can play with it independently of my Azure subscription.
+So, we'll do that. There are various different project types,
+we are interested in classification.
+We want to know what are in the different images,
+what class the image belongs to.
+There are different types of classification.
+In this case, we are interested in multiclass.
+In other words, there are multiple types
+of things, there are carrots,
+there are apples, but each thing is one thing
+or the other is either a carrot
+or it's an apple, it can't be both.
+So, it's multi-class with a single tag per image.
+There are various pre-built domains
+which are used to optimize the way that the model is trained.
+There's actually already one for food.
+So, we'll choose the food one.
+That should hopefully give us a bit of a boost when we come to
+train our model using some pictures of fruit.
+So, we go ahead and create
+that project. It gets created like this.
+I get a little prompt that tells me I could move that to
+my Azure subscription and get a higher quota and so on.
+But, we'll just go ahead and work with it here.
+The first thing we need to do obviously is
+add some images to our project.
+So, we're going to add some images.
+If I have a look in this folder here,
+I can see I've got pictures of carrots in this folder.
+There's not very many of them. I think there's
+may be nine images there.
+So, we'll just select all of those,
+and we'll go and upload those.
+We'll specify the tags that we
+want to associate with these images.
+These are all pictures of a carrot.
+So, that's the tag we want to associate with that,
+then we'll upload those nine files.
+So, those files are uploaded
+and I can see that they're all in here.
+I'm only showing my carrot images
+because those are the only images I've got.
+I can see that those are all there.
+So, there's different colors and
+orientations of pictures of carrot.
+I need to add some more images.
+I've got a different class of image that I want to add.
+I'm interested in adding pictures of apples.
+So, again we've got a handful of pictures of apples.
+We'll just go open up those.
+Again, we want to specify the tags.
+So, it's going to be apple in this case,
+and we'll upload those files.
+So, now I have some pictures of
+apples up there and some pictures of carrots.
+So, I'm seeing both of those different classes their identifier.
+Going to have a look at that image,
+I can see that that one is tagged as apple
+and so on. So, I've got my images.
+I've got my two different classes that
+I want to differentiate between.
+Now, I need to use that to train a model,
+to train a classification model.
+To do that, I'm going to use this green train button here.
+So, we'll go ahead and click "Train",
+and off it goes and starts training that model.
+It's going to create an iteration.
+Every time I train, it will create a new iteration.
+This is always for the first time when we're training it.
+So, we get iteration one.
+It will take a little while to go and finish that.
+Then when it does, it does some testing against
+those images and I get measures of precision and recall,
+which if you remember, a way of
+measuring the accuracy of the model.
+Now, obviously there's a very small number of images here.
+So, I would take these figures with a pinch if so,
+but we have trained a model.
+It does seem to be able to classify between carrots and apples.
+It's getting reasonably results when it splits that
+data and tests the model that is built.
+So, we've now got our model built.
+We're ready to use it. Like I said,
+there could be multiple iterations.
+We've just done one and I'm going to make
+this the default iteration
+so that when we call the web service associated with this,
+that model that we've built,
+it will just use this iteration
+as the one that it's going to classify with.
+Now, when I come to call this,
+I'm going to need some information.
+So, let's look at the settings for this.
+Here's my project name as Produce,
+and it has a project Id.
+So, there's a unique Id that identifies this project.
+Then, for connecting to this from clients,
+I could actually do the training that I've just
+done using the user interface.
+I could do that programmatically.
+I could write code to do that,
+and I would need a training key
+and a training end point to do that.
+But I've already done that. I've already trained my model.
+I just need to use it to predict values.
+So, I need the Prediction Key and the Prediction Endpoint.
+These are the bits of information that I'm going to need.
+To do that, I'm going to run some code over
+here in my Python Notebook here.
+There is in fact an SDK for
+Python for working with this Custom Vision Service.
+So, the first thing I'm going to do is install that SDK.
+We'll just go and pip install that into my Python environment.
+That will go and download that package.
+It's actually already installed
+because I've been playing with this earlier.
+So, I've got that ready to use.
+Now, I need those values.
+I need my prediction key,
+my endpoint, and my project ID.
+So, there's the Project ID.
+We'll just grab that, copy and paste that
+across into the appropriate variable.
+We'll do the same with the prediction key.
+Remember, I don't need
+the training keys because it's already trained.
+So, we'll get the prediction key.
+I've already filled in this Endpoint southcentralus.
+At the time I'm recording this,
+the service is only available in
+South Central US. So, it's always going to be that.
+But later on, it's going to
+be obviously available in different regions.
+So, you're going to want to double-check that
+against what you've got here from the prediction endpoint.
+So, we've got all that ready to go.
+We'll just populate those variables
+so that we're ready to use them.
+Then, I've got some code that actually uses
+this Custom Vision SDK.
+So, we're importing from that SDK,
+the Custom Vision Prediction Client,
+that's the client that we need to use to obviously run
+some prediction against our images that we want to test it with.
+I've got a few other imports here just so that we
+can visualize the results.
+To test, I've got a couple of
+images that are available on the Web.
+These are from a free library
+that's been very kindly posted up here.
+So, I can go and have a look at that image there.
+There's an image of an apple,
+and we've also got an image of a carrot.
+So, we'll just go and grab that,
+and just verify that that is in fact what's going on.
+So, we've got two different images that we're going to use.
+I'm going to connect, I'm going predict from
+my Custom Vision Prediction Client based on
+my prediction key that I copied over there and the
+end point I'm connecting to that South Central US Endpoint.
+Then, I'm going to predict from an image URL.
+I could upload an image or I could point to a URL.
+In this case, I'm pointing to
+a URL and I'm telling it the project ID
+that my project is identified with I want to use,
+and the URL of the image that I want to predict.
+I haven't had to specify
+the iteration number here
+because we're going to use the default iteration.
+So, we'll send that up and then when it comes back,
+we'll get the results.
+It's going to be a JSON document.
+So, we'll get the results back.
+We will extract the tag name that's predicted from that,
+and will also extract the probability
+that the model thinks it's right.
+In other words, how probable is it that it is
+that tag and we'll display that along with the image.
+We'll download those images and display them along with
+their prediction and the probability.
+So, let's go ahead and run that code.
+What comes back are my two predictions.
+This one here is an apple.
+We're 99.86 percent sure that that's an apple,
+and this one we're 99.97 percent sure that this is a carrot.
+So, I've successfully built
+an image classification model using the Custom Vision Service.
+I've trained that, I've published it,
+and then I'm able to write code that will
+connect to that and point it to images and
+get a classification back
+based on what the model thinks that image is.

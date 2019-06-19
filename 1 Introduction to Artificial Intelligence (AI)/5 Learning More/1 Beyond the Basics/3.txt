@@ -1,0 +1,38 @@
+At the beginning of this course we explored some statistical machine
+learning techniques and you've seen how they can be used to create effective
+predictive models however we're continuing to develop new more powerful
+machine learning techniques that take advantage of increased computer
+processing power and new algorithms for deep learning such as convolutional
+neural networks and reinforcement learning the Microsoft cognitive toolkit
+provides data scientists in AI engineers with a powerful set of libraries for
+building deep learning models to take advantage of the cognitive toolkit you
+can come to the cognitive toolkit website and install it locally on your
+computer and then there are some tutorials and documentation you can use
+to get started alternatively you can go to Azure
+notebooks and it supports the cognitive toolkit out-of-the-box there's an
+environment there where you can run cognitive toolkit code and there are the
+same tutorials available there so you can open up these tutorials and learn
+how to use the cognitive toolkit to do deep learning or alternatively if you
+have the data science virtual machine the cognitive toolkit is installed on
+there and if I open up Jupyter notebook here I can see that there's a CNTK
+samples folder that contains tutorials and there I've got those same tutorial
+notebooks as well so there's there's multiple ways in which you can use the
+cognitive toolkit now why would you want to use the cognitive toolkit we've seen
+that we can use tools like Azure machine learning to build machine
+learning models the beauty of the cognitive toolkit is it's designed to
+take advantage of multiple CPUs or even GPUs to work with huge volumes of data
+and dramatically reduce the amount of time it takes to train models based on
+that data and build a machine learning solutions it's a great platform for
+working with what we call deep learning techniques and deep learning techniques
+are generally based on trying to mimic the way that human brains operate when
+processing data so we have this concept of a neuron we build a neural network
+and each neuron has multiple inputs which have different weights associated
+with them we then calculate a value based on the
+and based on those weights to give us a value between zero and one that
+determines whether this neuron is activated or fires and then we can chain
+these things together as a network of neurons and build very sophisticated
+learning models that operate on on very complex problems so if you want to go
+further with machine learning and learn how to use these deep learning
+techniques the cognitive toolkit is a great platform for enabling you to do
+that and you can do that in any of these different toolsets that we've talked
+about in this course

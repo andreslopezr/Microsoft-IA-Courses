@@ -1,0 +1,71 @@
+Now, sometimes there are words that are very similar, they're
+from the same root, and we use them across our documents.
+And we wanna make sure that those words are treated
+the same.
+Now, our literary robot continues to find interesting
+quotes from Shakespeare's plays.
+And in this case, there are three quotes that contain words
+with the same root.
+Sweet, sweetness, and the slight less commonly used sweeting.
+Stemming is a technique used to identify words with
+a common root and count them as the same.
+A common technique is to use something called the Porter
+algorithm, which defines a sequence of rules for
+breaking words down into a common stem based on the pattern
+of consonants, vowels, common letter combinations and
+word endings, and other syntactical elements.
+Now, I've got another one of Kennedy's speeches here.
+We've got his inaugural address when he first became president.
+So let's take a look at stemming that document and see what
+effect that has on the frequency of words in the speech.
+So in Jupyter, I'm gonna go and load the text of the speech.
+And we'll just simply display that text on the screen.
+And then we'll do the usual thing,
+we'll do some normalization.
+So we're gonna remove the punctuation, remove the digits,
+change everything to lower case, and
+get rid of all the stop words.
+And then we'll get our frequency distribution
+of the words that are in there.
+And we'll plot those as a Pareto chart.
+So exactly what we did before.
+And let's go ahead and run that cell.
+So here's the speech, it's quite a long one.
+It starts off with Vice-President Johnson, Mr.
+Speaker, Mr. Chief Justice, all the people who were there.
+And then we observe today not a victory of a party but
+a celebration of freedom.
+So we've got this longer speech here
+that was given by Kennedy in his inauguration.
+And here is the breakdown of the frequency of the words that
+are in there.
+So the first word there is let us world,
+can't actually read that one very well.
+Sides, new.
+So it's not particularly meaningful there.
+I can see a bunch of words in there, and
+I can see as I go through there, I've got power here down around.
+It's gotta run five mentions of the word power in there.
+So, and nations is in here as well with about five words.
+So there's a little bit of sense I can get out of that.
+But what happens if I actually stem the words?
+What if I try and find words that have a common root?
+So to do that, again, I'm gonna use it in the NLTK library.
+I'm gonna bring in this thing called the PorterStemmer,
+which is a specific algorithm to do the stemming of the words.
+And what we're gonna do is we're gonna stem each word in
+that collection of words that we've got.
+And then we'll go ahead and
+get the frequency of the stems, and we'll plot the frequency of
+the stems instead of the individual words.
+So let's try that and have a look.
+And here's my Pareto chart.
+And the first couple of words are the same, but then look,
+power and nation are now showing up as having eight and
+nine instances respectively.
+So power and nation, obviously that are words like powerful and
+there are words like national and nations.
+So what's happened there is we've taken those
+words with a common stem and counted them as the same word.
+And that's very much changed the effect of looking at
+the frequency of the words in the text.

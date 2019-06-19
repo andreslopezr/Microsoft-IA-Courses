@@ -1,0 +1,126 @@
+Videos are not particularly interesting unless they show some movement.
+For example, imagine a video camera used to monitor an endangered species or a
+secure location. AI can help you find the frames where movement occurs instead
+of having to watch the entire video; or maybe you want to be more specific and
+only highlight points in the video where a human face is visible, or even identify
+the features of a person in the video. Well to analyze my video I'm going to use
+the video indexer API. Here's the video indexer account that I'm going to use
+and you can see the account name is here, and it's a trial account - it's not
+connected to my Azure subscription. If I expand that out there I can see the
+unique ID that identifies this video indexer account. So back in my code I
+have referenced that this is a trial account it's not located in a data
+center in Azure it's just simply a trial, and I've got my account ID there. So I'll
+run that code to set those variables. Now the other thing I've done, as well as
+a video indexer account, is I've got an subscription to the video indexer API.
+So I go to the video indexer API site I can see that there are numerous products
+available within this API - in fact there's only one at the moment, it's this
+authorization product, and if I take a look at that I can see that I already
+have a subscription set up for this API. And if I take a look, here are the
+details of that subscription and it includes primary and secondary key that
+I can use to authenticate myself when I connect to that. I can show that, I
+can get it to the clipboard so that I can use it. So I go back to my code
+Here's like key I've already pasted that in, so we'll just run that so we've set
+up the various variables that we're going to need in order to make
+connections to the video indexer API. OK, well let's now take a look at the
+process of connecting and using that API; and the first thing we need to do is get
+an access token. Now there are various different levels of access token and the
+first thing we need is a an account level access token so that we can
+connect to my video indexer account. So I've got some code here we're
+gonna make an HTTP request and basically we're going to connect to our API for
+the video indexer API we're going to pass in our a key and we're gonna pass
+in the location and account ID that we want an access token for; and we should
+get back that access token as a JSON document. If I run that code, off it runs
+it's going to come back and the JSON that gets returned here's the the value
+that we extracted from that. It's just an access token - it's a big long token
+that I use to make an authenticated connection to the API. Well now that I've
+got that I can actually start to use my video indexer API and what I'm gonna do
+is we're going to upload a video. I've got a video in my github location here,
+it's just called a vid.mp4. It's a video that I've recorded in a room.
+It's a video just observing what was happening in a room a particular time, So
+we're gonna grab that we are gonna go and upload that using our access token
+to authenticate ourselves. We will upload that to our video indexer account so
+we make an HTTP connection to do that and then we'll see what the response is
+when we upload that. So we run the code it takes a little while to run and then
+I get my response back. So I get some details about the thing that I've
+uploaded and the metadata that's been set for that video. Now one of the things
+that's in there, you'll see when I've uploaded it that it's actually assigned an
+ID to this video; and somewhere in this big JSON document that's been responded
+here there is an ID field that gives us the ID of the video. So rather than
+trying and scroll through this this document here, it's actually there I can
+see ID and there's the number, but rather than get that manually I'll just
+write some code that goes and parses the JSON and grabs my ID. So there's my
+video ID for the video that I've uploaded. Now uploading a video and
+processing it takes a little bit of time, so might just want to check the status
+of what's happening with that video as it's been uploaded. So again I'll use my
+access token and I'll connect, and this time I'm gonna try and get the status
+for that particular video using the video ID. I'm gonna run that. I can see
+the status at the moment is it's processing, and if I go and
+have a look at my video indexer account, I'll just refresh this page, we can see that
+the video is there and I can see that it's in the process of being indexed - so
+it is indeed processing; and I can come back to my code and I can just simply
+rerun that that code again and get the latest status. It's still processing so we'll
+just continue running that until the video is completely processed. And here
+it is after a little while the video itself is now processed and we're ready
+for our code to go and connect and start getting some insights from that; but to
+do that I need a different level of access token. I need an access token at
+the video level. So here's some very similar code to what we had before. We'll
+pass up our our key for our API account and the location and account ID, and this
+time the video that we're interested in so we'll pass an individual video, and we'll
+get back a token for us to work with that video. So I'll go ahead and run that and
+there's my video access token -  same idea as the last time - a big long security
+token, and I can use that to actually view the video. I can I can bring
+elements of the user interface from the video indexer website and I can go and
+embed that into my own application just using some code like this. I'm gonna go
+and get that URL, passing in the various details for my specific video and my
+token and then I'm just gonna display that in an iframe in this notebook. So off
+like goes and it gets the video indexer UI element and here's the video; and it's
+actually just started playing the video and I can see it's observing what is
+happening in a room which seems to be a fairly empty room at the moment. So
+there's obviously something interesting that I want to find in this video but I
+don't want to sit and watch the entire video. So what I want to do is I want to
+use the video indexer to get a breakdown of insights of what's actually happening
+in this video; and to do that I'm gonna once again connect to my video indexer
+API I'm gonna use my video access token and
+the location the account and the video ID and I'm gonna get back some
+information about what's actually going on in that video. So let's go and run
+that code and what I get back is a JSON response
+and if I've printed out the entire JSON response here just so we can see it. I
+get some metadata at the top about the the video and if I scroll down I can see
+a bit more information and one of the interesting thing is the faces that
+appear in this video; and it looks like there is at least one face. It says
+there's an appearance that ends after for 14 seconds it starts at 8.3 seconds so
+there's a face in there. We don't know who that person is -  we've got a known person ID and
+it's all zeros; and the name is Unknown #1 so there's an unknown person
+that appears in this video, and there's various other information about the
+video that I can see there. There's a wall, it's indoors, and so on. So there's various
+insights that have been intelligently gathered from that video. So we'll close
+out that down there, and we'll move to the next piece of code. We said
+there were some faces in that video so let's get some details of the faces. I'm
+just going to extract those face elements from my JSON so we're just
+going to take a look a closer look at those; and here it is. So that
+appearance is between8.3 and 14 seconds and here's the details of
+the face. So we don't know who the face is, but we might want to go and have a
+look at that face. So what I can do is I can actually go
+and grab a thumbnail of that face and there's a thumbnail ID that's assigned to
+each of the faces that were detected. So I'm going to extract the
+thumbnail ID and then I can use my video indexer API to go and grab the image
+that shows me that particular face that was detected. So let's go and run that
+code and I get back the clip of the face that appeared in the video. Well this
+looks familiar, and obviously there's somebody in that video that we
+recognize; so I might just want to go and take a look at the insights that were
+gathered about that face, and again I can borrow a piece of the user interface
+from the video indexer a website and I just display it in my own application. In
+this case just in an iframe in the notebook. So here's that face. I can
+see that this face is being detected as unknown. My account, my video
+indexer account has no information about who
+person is. So what I could do is I can edit my insight -so we'll just go and edit
+this person, and we know that that is actually me, so we'll just go in put my
+name in there make that change saved. So we're saving that now to our account so
+up in my video indexer account you know now that this face corresponds to
+that person. So if we spot that face again in in this video or in another
+video, we know who it is. Just to verify that, I'm gonna go and get the
+breakdown once again so I'm gonna refresh the breakdown for this video and
+check the face details to see what it says about that face; and if I go and run
+that, sure enough it now says it knows that person and that person has the name
+Graeme Malcolm. So we've identified that that person -  within the video we now know
+who that person is.

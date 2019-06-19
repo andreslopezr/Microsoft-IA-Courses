@@ -1,0 +1,9 @@
+In this course we've explored some of the fundamental principles and use cases
+for artificial intelligence but we've really only scratched the surface of the
+subject AI is a fast-moving area with new advances being made every day and as
+a growing need for AI engineering expertise to research deep learning
+predictive modeling techniques and to develop new AI solutions that drive the
+state-of-the-art forward in this lesson we'll introduce some of the advanced
+tools and frameworks that you can use to go beyond basic statistical machine
+learning and experiment with deep learning techniques and we'll point out
+some resources that you can use to learn more.

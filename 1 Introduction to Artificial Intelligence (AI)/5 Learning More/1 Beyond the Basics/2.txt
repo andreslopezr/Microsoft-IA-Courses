@@ -1,0 +1,93 @@
+So in this course we've seen a lot of examples of artificial intelligence and
+we've explored some of the underlying technologies and techniques that it
+relies on the AI is built on data science and machine learning and there
+are a huge number of tools the data scientists use to explore and process
+and model data deploying and maintaining a working environment that includes all
+of the tools that a data  scientist might use can be really challenging and
+time-consuming so the Microsoft data science virtual machine in Azure is a
+really good way to provision a data science workstation and get all the
+tools you need without having to spend ages installing and maintaining
+everything to deploy the data science virtual machine I'm gonna go to my Azure
+portal here and in my subscription I'm gonna add a new resource now you can
+see I've already got it on my short list here but if you're you're looking
+for it you can just simply search for a data science virtual machine and in the
+list of results from that you'll see there are various different flavors of
+that data science virtual machine there's a version that run on Windows
+and there are versions that run on Linux and there are also versions and
+different versions of Windows so you can you can pick and choose whichever one is
+the right one for you I'm gonna go with the basic data science virtual
+machine for Windows option here and I get a description of everything that's
+included in that tool and there's a whole bunch of tools in the virtual
+machine that are going to be useful if you're working with data and building
+predictive and machine learning models so I'm gonna go ahead and create and we
+get the usual Azure kind of approach to making a resource we've got a bunch of
+settings if we need to provide so I'll provide my virtual machine with a name
+I'll just call mine dsvm01 and there we'll get a little confirmation
+there - a little green tick of happiness tells me that's okay I can choose the
+disk type I can use solid state or traditional hard disks I'll
+stick with solid state because it'll give me a better performance
+I give a username for logging on to the machine it's just literally
+going to create a virtual machine with a username that I need to log on with so
+whatever user name I'll just give it my name and then some sort of password and
+there are some password requirements and needs to be a reasonably complex
+password and we'll just confirm that password there as well and this is the
+subscription that I'm currently using we're just gonna add this virtual
+machine to that subscription and we'll create a resource group for it so we'll
+call the dsvm-rg and i can choose whichever location i want to deploy this
+and i'm quite happy with west US so i'll just go ahead and click OK and now I
+need to choose the size of the virtual machine and this will
+control how much it's gonna cost to run this virtual machine whenever it's
+running we'll be charging against AI so you can see that to run this this is in
+and British pounds and that's per month for that standard size I'm really only
+just experimenting with this I don't really need anything quite as expensive
+as that so I'm gonna view all and when I view all I can see some other options
+there and there's a sort of less expensive one here just for the purpose
+of taking a look at the machine and seeing what's on it you can choose
+whichever is right for you and that you'll get an indication of how much it
+will cost to run that so go ahead and select that option and then I can set up
+various optional features for this I'm not gonna bother with any of these for
+this example but you could set up a an availability set to give you a high
+availability it's already configured a virtual network and so on for me so all
+the bits and pieces I need are really pretty much there I'll click OK and then
+I get a final page of confirmation ready to go I agree to the Terms of Use and I
+can go and purchase that virtual machine and off that's gonna go and provision
+the virtual machine and it'll take five to ten minutes to get that
+provisioned so we'll just wait from that to complete.. and when the deployment has
+completed we get our virtual machine here and the various options to stop or
+pause or whatever I need to do with that machine here
+the one I'm really concerned about here is connecting so I'm gonna go and
+connect and this is a Windows virtual machine so I'm gonna use a remote
+desktop program to connect to it and we're just go and connect and it's asked me
+to log in and it's using the credentials I'm currently logged into my local
+Windows machine here so I'm just going to change it to use the account that I
+configured when I provisioned the machine so we'll just put in our
+username and password and we get a little warning about not been able to
+verify the identity of the computer I'm happy enough with that I've just
+provisioned it so I'm ok with that so we'll see yes we want to connect and
+we get our Remote Desktop session starting and I'm now connected to my
+data science virtual machine and when it starts I get a little thing about
+do I want to make the network public here I'll just say no to that and here I
+am at the desktop on my data science virtual machine and you can see that are a
+number of shortcuts on the desktop here for the tools that have been installed
+so we've got things like visual studio code and the full version of visual
+studio here we've got Spyder which is a graphical environment for working with
+Python we've we've got SQL Server tools installed in here we've got our
+studio if you want to program in our to work with data you can do that
+we've got Jupyter notebooks which ow we've been using in this course and it's
+installed locally under the data science virtual machine ready for you to work so
+there's a number of things already there for me to start using and work with my
+data in this environment without me having to go through the the the pain of
+having to install and configure all of those tools myself so one of the things
+that you might want to do is get started with the data science virtual machine and
+there is in fact a shortcut on the desktop entitled exactly that so if we
+go and open that up our browser and I get a little warning because it's the
+first time I've used the browser or so we'll just use the recommended settings
+there and you can see the is a list of 10 things we can do on the
+data science virtual machine so you can get started getting to know the tools
+that are on here and how you might use them to get started working with data
+science tasks or building machine learning models so we're not going to go
+into the details of all of the tools that are on here in this course but we
+really just wanted to make sure that you're aware that the data science
+virtual machine is there it can save you a lot of time setting up the environment
+and you can of course just spin it up and use it when you need it
+and then delete it when you're finished with it and only pay for what you use

@@ -1,0 +1,145 @@
+After you've deployed your model as a web service
+You can consume it from a client application, so let's take a look at that. So here
+I am in the web services portal for my diabetes Predictor web service
+And I want to consume this web service from a client application now. I could just go to the test
+page here
+and just simply type in the the values are what a test for my my patient all of their details and
+Then go in a get response here in the website
+But obviously I want to consume it from an actual client application and to do that
+I get the details on this consume page, and I could just open it up in excel straight away
+Or I could use this information here in order to connect to the web service across the internet
+So what have we got?
+We've got a primary key and a secondary key now these keys are
+Required when we connect over an HTTP connection to the web service we need to authenticate ourselves, so a client application
+That's connecting will pass one of these keys as a way of authenticating against the web service
+so we need one of those keys and we also need to know the
+HtTP endpoint to which the client is going to connect it's going to connect over the internet to this web service and we've got two
+possible end points one is we can use this request response endpoint in which case for each of the
+Patients that we want to get details for it
+We'll make a request and then immediately get a response for that patient and it can do that for for multiple patients
+And get a response for each one by making a request and looking at the response
+alternatively if we're gonna be dealing with a large volume of
+Patients, and maybe at the end of a day we've got a gathered data for lots of patients
+We might make a batch request and just simply send all the requests in one go and then
+Asynchronously have them processed and get the results back as a batch so we can use either of these
+Endpoints, and they'll both work perfectly well against our our web service
+So let's put this to the test and what we initially we'll try it with with excel. So I have excel open here
+And I have some some data in here for some patients perhaps during the day
+I've been using excel to log the patient details as we've we've done the air that that
+Various tests on them and now we want to run these this data through our predictive algorithm to
+To whether or not we think this patient is at risk for diabetes
+So to do that. I'm Gonna need to
+Connect to the web service and in order to do that. I'm gonna use an add-in no
+I've actually already got the add-in
+Installed us the the azure machine learning add-in here if you don't have that you can go to the store and you can
+Find it. It's free and you can just install that as a free add-in
+But if I are going to enable that and it appears here in a pane on the right of my workbook
+And there are a couple of web services these are sample web services are already provided and I can then add a new
+Web service, and it's asking me. What's the url?
+What's the end point you need to connect to for this web service and now well we've got that information over here
+We can use either the batch request or the request response
+We'll assume that our
+Clinic has been gathering Data all day
+So we might have lots of records
+so we'll use our batch request endpoint which copy that to the clipboard and we'll paste that in here and
+Then we also need the api key we need to authenticate ourselves against the the web service so again
+We'll go back and we can use either the primary of the secondary key
+It doesn't matter which we'll copy that and then go and paste that in to our apI key
+So those are the two bits of information we need to connect to the web service, so we go ahead and click add
+In that adds the diabetes predictor web service and immediately opens up
+And I can see some information about it now before we go ahead and predict
+Let's just view the schema and we can see that here's what the the input requirements are here's what's expected
+By the web service when we pass up the patient ids who expects these different fields and it's going to return these outputs
+It's going to return the patient Id the physician the diabetes prediction and the probability
+So that looks like what we were expecting so we've got the schema there now
+we can go ahead and use this per date and tab here and
+First of all we need to say well, where's the input?
+Where is the input that matches that input schema and actually it's these columns here
+I've already got them in my workbook
+So I'll just go and Select those I
+Will tell it that what we want to use as the input and that includes the headers?
+We've got the column headers in there as well. So that's all ready to go
+And then we would need to put the output somewhere when it kind of makes sense just to put it next to the data
+that's the input so J1 would appear to be a sensible place, so we'll just
+Specify that and it will put the output there starting at J1, and it will again include the headers
+So we're ready to go now
+We can just go ahead and click predict
+And it's going to call my web service over htTP and it then gets the results fairly quickly in this case
+where I can see the patient id the physician the diabetes probability one or a zero and
+The the probability against that that value so we can see a in excel anyway
+it's easy enough just to use this add-in to connect to my web service and consume that and and if I were a
+Health clinic testing people for diabetes that might be a sensible way to do it. I might already use excel
+I just use that to record the patient test data and then submit that to the web service
+But what if I wanted to build a custom application of my own what if I didn't want to use excel?
+I want it perhaps. How about a website or some other custom app that uses my my web service
+Well, I can do that as well. If I go back to my web service portal here and
+Underneath the the basic consumption information, there's some sample code here, and you can see there's some C-sharp code this python
+It's actually python 2 code
+There's a python 3
+Code there as well, and there's our code so languages that are commonly used
+when working with
+Data size technologies or working on the Microsoft platform you can see we've got a sample called there, and that's specific to my
+My my own web service so I could for example
+use python 3 to create a notebook that that goes and
+Connects to my my web service and uses it and to do that rather than using the Notebook service in azure Machine learning
+I'm gonna Introduce you to something called the Microsoft Azure Notebooks service now. This is a standalone service
+It's separate from azure machine learning. It's purely just a way posted environment in which you can run jupyter notebooks
+you don't need an ad your
+Subscription you don't need an azure and machine learning a workspace you just use this to work with notebooks and work with data
+so in this case I've already signed in I can see my
+My profile page here
+and I can see you have these libraries effectively folders of notebooks that you want to work with and
+What I'm gonna do is I'll just view all of my libraries, and I'll go and create a new library in here
+So here's a new library
+Which we will call
+diabetes clinic
+And it needs to have a unique url in case I want to share it with with people so again
+We'll just put diabetes clinic and there as well
+I'll just fix that typo
+And we will we can provide a description. I could make it public in this case. I'll just make it private
+Because I'm doing one person's going to use it
+And off that goes and creates that library opens up diabetes clinic, and I'm ready to create a notebook in that library
+So I'll go ahead and entry a brand new Notebook
+which I'll call diabetes and
+The language I want to use I've got a choice of different languages, and I'm going to use python 3.6 in this case
+so we'll go ahead and click new and
+it goes and creates my diabetes notebook there so I can open that up and
+That generates a notebook server in which it's going to launch my notebook
+And then we should be in a reasonably familiar territory this looks pretty similar to the jupyter in all books
+We worked with and as your machine learning and if writer is it's the same jupiter environment has just been hosted in this separate standalone
+Notebook service and azure
+So what am I going to do with that well?
+I'm going to go back to my web services code here, and I've got the python 3 code available to me here
+so we'll just go ahead and copy that to the clipboard and
+if I go back to my notebook I can then
+Paste that in so here's what what that code that's provided for me. It's Gonna
+Use this this url lib request it's Gonna make a url connection
+It's going to connect over htTP and we're gonna be sending Data backward and forward in a format called JSon
+So we will have this JSon library as well
+we set up our inputs and I'll come back to these in a second, but we set up the input parameters and
+Then we encode that as a jSon document
+That's going to be the body of our request so we connect to this url. That's the url for the endpoint for my
+service and we need to connect by passing in the api key that gets passed in and the header of our request and you'll see
+That it hasn't actually proven in for security reasons. It hasn't copied that across so I need to go back to
+my
+Consume page and go and get the the key I could use again either the primary or the secondary
+so we're going to replace that and
+ABC123 with my actual key value that gets passed over in the header
+And then we make that request just a regular web request over htTP passing in
+The the body which will be the Jason
+document containing all of my patient data and the headers which includes my key and
+Then that's going to go in and send back a response and the response that comes back. We are Gonna read
+It's again gonna be a jSon document, and unless of course the header has happened
+We are gonna be able to read that and decode it and just display the results down here in my notebook
+So it's fairly straightforward called making an hTTP request
+Passing these parameters now the parameters here aren't particularly useful a patient
+Id one age one isn't isn't really very useful so we'll replace those with some values that are actually a little more useful
+So we've got some actual patient data there that might be a bit more meaningful, and I will go ahead and just run that chord
+And we make the hTTP request what we get back is a adjacent
+document, so that's this curly bracket here indicates the beginning of our results, and then we got our
+Output but the important thing is we get the patient Id
+The physician the diabetes prediction in this case is 1 and the probability that goes with that prediction
+so we're able to
+Very easily put together some code to call our web service and obviously we could then adapt this code and build a custom
+application that calls our web service
+Over HTTP and get bike there our prediction so that we could then do something with them in a custom application

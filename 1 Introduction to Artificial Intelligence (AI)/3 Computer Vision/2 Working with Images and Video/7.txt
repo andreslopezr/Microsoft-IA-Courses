@@ -1,0 +1,40 @@
+Seeing AI is a Microsoft research project for
+people with visual impairments.
+The app narrates the world around you by turning
+the visual world into an audible experience.
+Point your phone's camera, select a channel, and
+hear a description.
+The app recognizes saved friends.
+>> Jenny near, top right, three feet away.
+Describes the people around you, including their emotions.
+>> 28 year old female, wearing glasses, looking happy.
+It reads text out loud as it comes into view,
+like on an envelope.
+>> Kim Lawrence PO Box.
+Or a room entrance.
+>> Conference 2005.
+Or scan and read documents like books and letters.
+The app will guide you and
+recognize the text with its formatting.
+>> Top and left edges not visible.
+>> Hold steady.
+>> Lease agreement.
+>> This agreement- When paying with cash,
+the app identifies currency bills.
+>> 20 US dollars.
+When looking for something in your pantry or
+at the store, use the bar code scanner with audio cues to help
+you find what you want.
+>> Campbell's tomato soup.
+When available, hear additional product details.
+>> Heat in microwave bowl on high
+And even hear descriptions of
+images in other apps,
+like Twitter, by importing them into Seeing AI.
+>> A close up of Bill Gates.
+Finally, explore our experimental features,
+like scene descriptions, to get a glimpse of the future.
+>> I think it's a young girl throwing a frisbee in the park.
+Experience the world around you
+with the Seeing AI app from Microsoft.
+[MUSIC]

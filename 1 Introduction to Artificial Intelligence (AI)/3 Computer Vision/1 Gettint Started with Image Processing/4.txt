@@ -1,0 +1,36 @@
+After you've prepared an image you can extract features from it using a variety
+of techniques so for example you could use an edge detection algorithm to find
+contrasting edges of color or intensity they often indicate the boundaries of
+shapes or objects in the image so for example the Sobel edge detection
+algorithm works by convolving an operation over the image similar to
+Gaussian a median filters that you saw previously however this time the matrix
+that we apply is a two-stage masking function that is applied to the pixel
+intensity values in the image to calculate a gradient value based on
+changes in intensity this mask is apply to find the horizontal gradient for each
+pixel let's call it Gx and then this mask is applied to detect the vertical
+gradients which we'll call Gy we then add the squares of the x and y gradient
+values that are calculated for each pixel and we take the square root to
+determine a gradient value for each pixel and we can calculate the inverse
+tangent of those values to determine the angle of the edges that have been
+detected so here's my Python code and I'm just creating a function called edge_sobel
+passing in the image and all I'm doing with this is I first of all am
+converting it to grayscale and as it happens my image is already in grayscale
+but it's the Sobel edge detection only really works properly with with
+grayscale images and not one dimension so we'll convert it to grayscale just in
+case and then we're gonna take our horizontal pass through and get the
+horizontal edges and then we will do the vertical pass through so remember
+there's these two passes to get the X and y of the edges and then we apply
+this hypotenuse function here and to basically add the squares of those and
+take the square root to get the the actual magnitude of the the the
+different edges that are found and then we're going to apply this function here
+to normalize that and then I can now return that back and display those edges
+in my image so we'll go ahead and run that code and here's what it finds sure
+enough it goes through the image and it detect
+at the edge of the jacket and around the the head and particularly around the
+eyes actually we can see there's a lot of different edges that is detected
+there but there's light and shade going on and the mouth and the nose so
+we we're actually able to go and detect reasonably sophisticated edges in that
+image just by applying that particular Sobel algorithm so we're able to work
+with the fact that the image is really just numbers and from that we're able to
+go and grab these features and extract them so that we can work with them in
+the image

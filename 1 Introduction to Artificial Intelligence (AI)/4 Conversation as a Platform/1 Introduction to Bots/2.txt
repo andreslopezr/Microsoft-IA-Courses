@@ -1,0 +1,11 @@
+now Microsoft bot framework provides a platform for building and publishing bots
+you can use the bot builder SDK or the Azure bot service to create your bot and
+publish it as a web service then you can make your bot available through one or
+more channels such as Skype or other popular messaging and social media
+platforms the bot connector service handles the message exchange between
+your bot and the channels through which users engage with it each interaction is
+an activity that can be a message or a visual element such as a card that
+contains images buttons or input field when a user starts a dialogue with a bot
+the activities are routed between the channel and the bot automatically you
+can also integrate your bot with cognitive services so then it can
+respond intelligently to user input

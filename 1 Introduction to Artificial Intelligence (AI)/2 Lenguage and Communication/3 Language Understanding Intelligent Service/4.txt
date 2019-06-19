@@ -1,0 +1,34 @@
+So we've seen how to build a LUIS app and how to train it with intents that
+relate to entities, and to interpret utterances in order to decide which
+intent is intended; but what we really want to understand is how can that
+develop over time how can we improve the performance of our LUIS app so that it
+understands different utterances and interprets them correctly going forward.
+Let's take a look at something called active learning, which is a way of
+improving our service over time. So here's my Python client app and I've
+tried a few commands. We've tried turn the light off and we got our appropriate
+response with the light off; and I'm just going to try something a bit different. So
+we're going to in this case say something like turn out the light. Now in this case
+the LUIS app has not been able to identify the the right intent -
+it's basically sent back a response of none, and we've displayed a big question
+mark here because turn out the light is not something that any of the utterances
+we trained our LUIS app with and would logically be interpreted as being either
+the light on or light off intent. So the intent is unknown. Effectively it's
+none, and we get back this response; but if I go back and have a look at my LUIS
+app, here's where we've published it and on this Build tab here I can review some
+endpoint utterances; and I can see among those utterances we've got this one here;
+turn out the light. That's the one we just tried, and it's aligned to none. It's
+got a 0.29 score as it tries to identify that - it's just not able to figure
+out which of the intents I have that one it relates to; but what I could do is
+go an align that now to the light off intent like that. So it's
+now aligned to that intent. we'll just go and close all of these off, and what we can
+do is is go and retrain our model here. So we'll just go in and retrain that app,
+and now if I go and test that we'll try our intent that we've just changed, so
+we've got our put out the light, and that comes back as
+being light off; so it's now associating that with the the intent of
+turning it off. So we were able to retrain our model based on some input
+that we've been getting from our client app; and if I just go and publish that
+again, we'll just republish that to our production slot. And now that that's been
+republished I can go back and try out my app again. So we'll just run our code
+and this time when I run the command turn out the light, we get back the
+appropriate response. It's actually now able to identify that the intent is the
+light off intent, and we the application responds accordingly.

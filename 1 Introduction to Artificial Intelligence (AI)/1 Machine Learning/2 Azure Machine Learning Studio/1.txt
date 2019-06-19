@@ -1,0 +1,123 @@
+So now that we understand a bit more about what machine learning
+is, it's time to think about how we can work with data to
+create predictive models.
+Now, there are lots of tools, services, and programming
+languages that data scientists use to prepare a model and
+test data.
+In this course, we'll look at an easy to use service for
+machine learning and
+modeling in Microsoft Azure, but the same principles and
+work flow apply to almost any machine learning framework.
+Azure machine learning is a cloud service in Azure
+that enables you to experiment with data and
+create predictive models.
+You start with a data set, which contains the data with which you
+want to experiment, and this data set provides the starting
+point of an experiment in which you'll define a workflow
+of transformations to apply to the data as you explore it and
+prepare it for modeling.
+You can use your experiment to find the most
+effective ways to train a machine learning model and
+generate a predictive experiment from your training experiment.
+Which encapsulates the machine learning model and the
+associated data transformations ready to be used with new data.
+You can then publish your predictive experiment
+as a web service, and client applications
+can call that web service to generate predicted values.
+Well to get started with Azure machine learning,
+you'll need to provision an Azure ML work space.
+Now there is a free standalone work space offering for
+getting started with Azure ML.
+And there's also a full service integrated into Azure.
+In this course,
+we're going to use the full Azure work space but
+a lot of what we look at applies to both.
+Right, let's take a look at how we go ahead and
+provision our work space in our Azure portal.
+So, I'm gonna go ahead and Add a new resource.
+And I could go in and hunt for it, it's at those various
+places it's likely to be or I could simply search for
+it using the Search box, so we'll just go and do that.
+Azure Machine Learning and
+I find a bunch of things that are fairly close matches to that
+including this thing called a machine learning work space.
+And that's the one I want, so we're gonna go ahead and
+create our workspace which is choose Create.
+And I'm gonna have to define some sort of name for
+my work space, so I'll just call it a AMLWS.
+It just does a little check to make sure I haven't already
+got something with that name, so that's fine.
+And we can either put it into an existing resource group or
+create a new resource group.
+Resource groups are just used to keep all things that are related
+together, so I'm gonna create a new one,
+call it AzureML Resources.
+And I can choose the location where I want to deploy that, so
+I'll go ahead and deploy in, let's say, West Europe.
+And I'm gonna need a storage account to go with
+that Azure ML work space.
+The storage account is used to store
+the models I'm gonna create and the data that I'm gonna work
+with in all that kind of thing in the work space.
+So we'll create a new one, and I need to give it a name,
+and that storage account that it's got there already exists.
+So we'll come up with some alternative name for that, so
+we'll just call it anlstore12345,
+something like that.
+And yep, we get a little tick there to tell us
+that that's a unique name, I've actually said amlstore.
+We'll just correct that, okay,
+so I've got the choice of a work space pricing tier.
+Well I don't really get a choice actually, I'm just gonna go with
+the standard pricing tier here, so we'll go with that.
+And what's gonna happen here is I'll be charged for
+web services that I use.
+When I publish my machine learning models as web services,
+I'll be charged per use.
+So I'm only really charged when I actually use
+the predictive models that I create.
+And what I get charged for that is based on my pricing plan, so
+I'm gonna go ahead and choose a pricing plan, and
+actually I'm gonna choose the DEVTEST pricing plan,
+which gives me a total of 2 compute hours,
+1,000 transactions for zero cost.
+So for me, just learning about this,
+that's a perfect choice for me, so we'll take that, and
+then we're ready to go, so we'll just click Create.
+And off goes our Azure portal to create our Azure machine
+learning work space, so
+we'll just give that a minute or two to get created.
+And when the deployment is succeeded, I get a little
+message up here telling me that everything is ready.
+And I can go and look in my resource groups here,
+here's my AzureMLResources resource group.
+And I can see that what it's actually deployed is my AML.WS
+workspace that we asked for and also a store,
+the amlstore12345 storage account that I wanted to
+create to store the models and files I'm gonna work with.
+And also, this plan here which is my machine learning plan,
+which is how we effectively we're gonna pay for the use of
+the service, so these three resources are deployed together.
+And I can go and have a look at my work space and
+what I can see in here is just some details about that, but
+the most important thing here is the ability to launch machine
+learning studio.
+And I find go and
+click that it opens up on a new tab in my browser, and
+I can go ahead and just sing in using my same credentials,
+And this gives me the environment that I'm gonna use
+to work with my machine learning experiments.
+Now you might be wondering why if I've just created a brand
+newer space why there is already some experiments in it.
+And that's because,
+you can have multiple workspaces associated with your account, so
+you can see that I've already got a couple of workspaces set
+up where I've already been working with some experiments.
+And I can always switch back to the one that I just created,
+which was in West Europe,
+there's my MLWS work space, if I switch to that one,
+And you can see that I've got a brand new empty work space with
+no experiments in it, nothing else in these other folders here
+either, ready for me to start working with some data.
+And experimenting and
+creating some web services with predictive models.

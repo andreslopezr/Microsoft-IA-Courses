@@ -1,0 +1,158 @@
+Natural language processing enables AI systems to do much
+more than just use statistical analysis of word frequency.
+Using an LP, we can build applications that can extract
+key phrases to determine important points and topics.
+And we can improve the accuracy of sentiment analysis by looking
+beyond the presence of positive words in the text and
+examining the semantics of what's being said.
+Let's take a look at the text analytics API and
+see how that can be used to extract semantic meaning, and
+sentiment from text.
+So the text analytics API is another cognitive service.
+And at this time rather we are getting it from cognitive
+services website, I'm gonna provision it in my Azure
+subscription, so let's take look at that.
+Here I am in the the Azure portal and it's a provision
+cognitive service, I'm just gonna add a resource to my Azure
+environment and I can see there is a list of various
+different types including AI and Cognitive Services.
+And I can see a bunch of things in here.
+Here's a bunch of different Cognitive Services that I
+can use.
+Note the language analysis one isn't there.
+So what I can do is I can see all.
+And I'll get a list of all of the cognitive services.
+And I can browse through, and
+find the one that I'm looking for.
+So what I'm actually looking for here is the text analytics API.
+Here it is here.
+So we'll go ahead and take that.
+And we'll go ahead and create an instance of that.
+And it's gonna ask me for a name for that, so
+I could call this my text analytics.
+And it's gonna ask me where I wanna put that.
+And a pricing tier.
+I'm gonna pay for the calls I make to this.
+Actually in this case,
+I've already got one here that's on the free tier,
+which is what I'll use for the rest of the demo.
+But I could choose one of these other tiers for this,
+and it gives me a limit of the number of calls I can make
+in a given time.
+So if I do that, I go ahead and get that set up,
+and ready to go.
+I could put this into a resource group.
+It's just a way of managing related resources together.
+And so I could put that in my AI-Demos resource group, or
+create a new one.
+I notice that I've gotta confirm that I understand the notice
+below.
+And there's some text here.
+So Microsoft will use your data to send the Cognitive Services,
+just improve it.
+This is something that's quite important.
+We're using cognitive services that involve passing data
+backward and forward.
+So it's quite important to think about the privacy concerns and
+the compliance aspects of working with data that
+gets passed to these services.
+So go ahead and confirm that we've read that.
+And go ahead, and create that service.
+And when the service is created, the deployment has succeeded.
+I can go and find that if I have a look in my different resource
+groups, I can see my AI-Demos resource group there.
+And within that I've got some services already created,
+there's the mytextanalytics service that I just created, so
+I can go take a look at that.
+And if I take a look at that,
+I can see here there's the option to show my access keys,
+and there's also keys option down here, and
+click it either one of those is gonna show me these keys.
+And these are what I'm gonna need to use to authenticate my
+client application against my service eye provision.
+So I could copy that key to the clipboard and
+use that in my code.
+Now as I mentioned earlier on,
+I actually already have my service set up.
+So we'll just go and take a look at that one.
+And it's in this right here.
+We'll just scroll down, and there it is.
+It's just called TextAnalytics.
+And I can see the access keys for that one, as well.
+So there's the keys.
+And this one, c9c5 and so on.
+So I can copy that to the clipboard.
+And if I go to my Client code, where I want to use this.
+I'm simply gonna make a note of the URI, that's
+location specific, depending on where I provisioned the service.
+This one's in the West US and
+the key that's required to access it.
+I'll just make a note of those,
+because I am gonna need those when I make the request.
+Then what I'm gonna do is I'm gonna use this API to
+compare a couple of different documents and
+get some information from them.
+So similar to what we did previously,
+where we just wrote some Python code to
+look at the frequency distribution of the text.
+We're gonna do something similar, but
+this time we're gonna look at phrases.
+We've got a little bit more intelligence behind
+the way that the text is parsed and understood.
+So we should get slightly improved results.
+So we'll set up our request header which includes our key.
+Then we haven't gotten any parameters, but
+we have a request body that is basically just the documents
+that I want it to parse.
+We have doc2Txt and doc3Txt.
+Just to remind you we've leaked these in a previous demo,
+and that's actually the Gettysburg Address and
+the text from the Microsoft Cognitive Services website.
+So we've got some text and
+these variables that we're gonna pass up.
+And then we're gonna call the keyPhrases method of this API,
+so we're using the /text/analytics/v2.0 API.
+We're calling the key phrases method.
+We're passing up that body which contains the text that we want
+to analyze and we get back a response which is
+adjacent document with a collection of documents.
+So we'll go through each document and
+we'll just display the document ID, and then all of the key
+phrases that have been found in that document.
+So let's go ahead and run that.
+And what I get back are for document 1.
+These key phrases, new nation, great civil war,
+people, new birth of freedom, great battlefield.
+So I'm getting fairly
+informational key phrases out of that document.
+And then from document 2 I'm getting speech developers,
+Microsoft Cognitive Services, vision recognition, set of APIs.
+So I'm getting a much more kind of
+comprehensive understanding of what these documents are about,
+than I would from just analyzing individual words.
+Now, the other thing that we can do with the text analytics
+API is we can do sentiment analysis.
+And again previously,
+we've built a sentiment analysis example using machine learning.
+But we can actually just do this using this kind of deeper
+understanding of language.
+So we should get slightly better results.
+So I've got a couple of simple examples here where
+wow cognitive services are fantastic and
+I hate it when computers don't understand me.
+So fairly small kind of basic text.
+These could be tweets or they could be reviews, or
+something like that.
+And this time we'll call the same API but
+we're calling the sentiment method.
+And again, we get back a list of documents.
+And what I'm gonna do is I'm gonna assume that the sentiment
+is negative unless I look at the score that I get back, and
+that score is greater than 0.5.
+It's a score between zero and one.
+So if the score is greater than 0.5,
+I'll consider the document to be positive.
+Otherwise I'll consider it to be negative.
+So let's go ahead and run that.
+And sure enough, Document 1 comes back as positive, and
+Document 2 comes back as negative.

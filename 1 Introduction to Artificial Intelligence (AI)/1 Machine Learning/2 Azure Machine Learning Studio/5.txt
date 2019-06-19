@@ -1,0 +1,65 @@
+So how do we create a clustering model in Azure ML?
+So, in this case I've got my Azure Machine Learning Studio
+experiment and I'm gonna be looking at people who come in to
+donate blood in my health clinic.
+So, I've got blood donation data here.
+I'm gonna select some columns from that data set.
+Really, I'm only interested in how recently someone has been
+how frequently they come, whether there's some sort
+of monetary aspect to them coming in to donate blood and
+how many times in total they've been.
+I'm just gonna normalize those numeric values so
+that they're all in the same scale, so
+that we don't have any high values dominating the training.
+And then we're ready to go and create our cluster.
+And what I really wanna do is try and find out are there kind
+of groups within my blood donors that are similar?
+And I'm gonna start using K-Means Clustering by specifying
+that I want to create three centroids or three clusters,
+if you like, and just see do they break nicely then into
+three different types of donor?
+So, I'm gonna train that clustering model using all of
+the features.
+And then I'm gonna look at what the results are that out.
+First of all, just look at the results that come out of that.
+Just visualize that.
+And I can see I've got the Recency, the Frequency,
+the Monetary, and the Time values.
+These are all normalized so you can see them all in there.
+And I've got the assignment.
+And that's the cluster that this has been assigned to.
+So I can see 1, 2, 2, 2, 2, 0.
+So there's three clusters and
+we're assigning across to those various clusters.
+Now, what I actually want to do is take a look at this output of
+my training clustering model And
+here I get my principal component analysis or PCA and
+it's basically gonna show me those clusters using these kind
+of vectors hidden in here.
+So I can see these ellipsis that represent the clusters and
+I've got kind of one that it's quite elongated at points,
+kind of up and down, it's kind of vertical aligned there.
+And then I've got a very small one that looks like it's aligned
+the other way.
+And then I've got this big kinda round kind of vague one in
+the middle, so that they aren't very clearly separated.
+There seems to be an awful lot of confusion about these
+clusters.
+So it doesn't look like I've really manage to identify three
+different clusters.
+So let's perhaps try that with less.
+Let's see if it at least breaks down into two different clusters
+and we'll just go ahead and run the experiment again.
+And when it's finish we're going to take a look again at the PCA
+that comes out of that.
+And this time there are two clusters and
+I can see that one of them,
+is kinda oriented north-south, if you like or vertically.
+So we've got this kind of ellipse that points up and
+down the way.
+And then we have an almost orthogonal ellipse going
+across the other way.
+So it does seem to break down better into two
+different clusters.
+It seems that we have two different kind of
+types of person coming in to donate blood.

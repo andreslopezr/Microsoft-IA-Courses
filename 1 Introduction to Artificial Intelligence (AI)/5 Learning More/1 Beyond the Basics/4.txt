@@ -1,0 +1,41 @@
+We are trying to teach sailplanes to stay up in the air autonomously,
+for as long as possible.
+Okay, I'm ready.
+(Propeller buzzing) What would it take for us to reproduce this
+intelligence that birds like eagles and albatross have?
+Yeah, you can start this now.
+Ok. (inaudible) Just a little bit.
+Okay, we're going to move up slow.
+The glider needs the ability to predict where it can find thermals,
+these thermals are bubbles of air that rise up.
+So you might have seen, you know, hawks or eagles you know soaring in the sky, they are
+doing this circular pattern, and what they are doing is they are just riding this bubble
+of air.
+It has an instrument called a variometer that tells it how fast it is rising.
+Reentering soaring mode.
+It has other sensors such as air speed, GPS location, so it knows where it is as it is
+flying through an area of rising air that, "Hey I happen to be rising," which means that
+it must be the surrounding air that's lifting me up.
+So at every single instance the glider needs to decide whether it should go and take a
+risk in order to find a thermal or keep doing what it's doing.
+Am I going towards the region where terrain might be rising and it might jeopardize my
+safety?
+The hardest part of the project is not to just keep the sailplane in the air,
+it is to keep the sailplane in the air under a variety of constraints.
+Yeah, waypoint one just is not working for whatever reason.
+We have legal constraints, we cannot go above a certain altitude.
+We have safety constraints.
+(radio chatter) Any AI system capable of acting in the real
+world will have to follow rules.
+Some of these rules will be explicit, like laws.
+And some will be implicit, like social norms.
+Thermal?
+Good Did the motor run?
+It's off!
+Whoa.
+A lot of lift.
+And you'll be at the cusp of technology where you know these flying robots can provide immense
+utility.
+For instance package delivery, precision agriculture, mapping, providing internet connectivity.
+So it is critical that these devices are intelligent.
+These devices can make decisions on the fly, under uncertain environments.

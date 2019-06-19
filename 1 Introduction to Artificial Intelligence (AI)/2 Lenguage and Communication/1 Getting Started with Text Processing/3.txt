@@ -1,0 +1,120 @@
+Simple word frequency can be a reasonably effective way
+to look at a single document.
+But when you have a large corpus of documents, common words can
+appear frequently in multiple documents.
+And a simple count of how many times a word occurs in total
+might not reflect its importance within an individual document.
+So to deal with that, we use a more sophisticated measure of
+word importance that combines two metrics named term frequency
+and inverse document frequency.
+Let's start with term frequency.
+This is simply the relative frequency of a term
+within a document.
+Now in this case,
+our robot has been continuing his studies of Shakespeare.
+And in this quotation,
+the word sweet appears once out of a total of 14 words.
+Now, the word rose appears with the same frequency
+within this document.
+So it would appear to be equally important.
+There's a similar story in the other two quotes.
+The word sweet appears once in the second quote,
+as does the word prince.
+And sweet appears once again in the third quote, as does sorrow.
+Now let's look at the inverse document frequency.
+This is a measure of the relative number of documents
+within which the term appears.
+It's calculated as the log of total documents divided by
+the number of documents containing the term.
+Now the term rose appears only in the first quote.
+So we can calculate its relative importance in that
+document like this.
+However, sweet appears in all three quotes,
+lowering its relative importance in individual documents to zero.
+And it's a similar story for the other quotes.
+Prince and sorrow score higher IDFs because they don't
+appear in the other documents and are therefore relatively
+more important in the documents in which they do appear.
+And finally, we just multiply TF by IDF to work out the overall
+importance of each term to the documents in which they appear.
+And as you can see,
+the prevalence of the word sweet across the collection of
+documents has effectively diluted its importance
+within the individual documents.
+So here I am in my Jupyter Notebook, and the first thing
+I'm gonna do is I'm gonna remind ourselves of the text that was
+in the document we looked at previously.
+So if you remember, we had the text from John F Kennedy's
+speech about going to the moon.
+And then I'm gonna load a second document here.
+And this actually contains the text of the Gettysburg Address.
+And we'll display that and then just clean it up.
+We'll do the same normalization we did to the other document to
+remove the digits, the punctuation,
+change everything to lowercase, and remove the stopwords.
+And then the third document is actually some text
+from the Microsoft Cognitive Services website.
+So it's an introduction to the Microsoft Cognitive Services.
+So we would expect that to be kind of different in its
+subject matter to the other two documents.
+And again, we'll just clean that one off.
+So let's go and run that cell, and
+here's the text from JFK's speech.
+So we can see what we had before,
+we set sail in this new sea and so on.
+And then we've got the text from the Gettysburg Address,
+so four score and seven years ago our fathers brought forth on
+this continent, so we got that rather famous piece of text.
+And then we've got the text from the Cognitive Services website,
+so Microsoft Cognitive Services are a set of APIs,
+SDKs, and so on.
+So we've got three very different
+kind of documents here.
+And what we're gonna do is, we gonna get the TF-IDF values for
+the top three words in each of those documents.
+So we're gonna try and find the top three important words in
+each of the individual documents.
+And to do that I'm gonna use this library called textblob,
+which just makes it easier to work with the text.
+I'm gonna install that library.
+I'm also going to be doing some math because obviously we're
+doing a little bit of calculations on these words.
+So we'll install that, and I've created some functions here.
+So I've got a tf function which calculates the term frequency in
+a documents so we get in the word and the document and
+then we go and do the math to calculate that.
+I've got a little helper function called contains that
+lets me figure out if a word is in there.
+And we've got an idf function that calculates the inverse
+document frequency.
+And then we have got this tfidf, which, obviously, guess the tf
+and multiplies it by the idf and returns the results.
+So it's the same formula we saw when we looked at this earlier.
+And I'm gonna take my three documents here, so we'll get
+the document out of those text documents I've just loaded.
+We'll create a collection of those documents here, so doc1,
+doc2, doc3, we've got a list there.
+And then we're gonna use our functions to get the top
+three most important words from those individual documents.
+So let's go ahead and run that.
+And it does the install of the textblob library and
+then we get our top words.
+So the top words in document 1 are space, go, and sea.
+Well, space and
+go kind of tell us something about that document.
+And sea is perhaps a little bit misleading but
+we get the impression.
+It's about a journey, it's about space, it's about going.
+Document 2, the top three words are nation, dedicated and
+great which kind of make sense.
+It's a speech about bringing a nation together and
+about the dedication of the people in there, so
+we can see that that's kind of what that's about.
+And then document 3 is completely different.
+The top three words are services, Microsoft and
+cognitive, which is pretty much exactly what I would expect
+from a document about Microsoft Cognitive Services.
+So we've used the TF-IDF to analyze multiple documents and
+pretty much ignore the words that are frequent in all of them
+and really focus on the words that are important to each
+individual document.

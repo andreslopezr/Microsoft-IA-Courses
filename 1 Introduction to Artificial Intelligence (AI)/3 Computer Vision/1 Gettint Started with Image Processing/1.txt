@@ -1,0 +1,74 @@
+Before we can explore how to process and analyze images,
+we need to understand how a computer sees an image.
+So for
+example, here our friendly robot has a family portrait.
+As a digital image this is actually represented as an array
+of numbers that indicate pixel intensities between 0 and 255.
+And actually, because this is a color image,
+it may be represented as a three-dimensional array,
+with each dimension corresponding to the red, green,
+and blue hues in the image.
+The specifics depend on the format of the image and
+how you want to work with it.
+For example, we could convert this image to grayscale and
+now it can be represented as a two-dimensional array.
+Now there are various libraries for
+working with images in python.
+So let's take a look at some simple code to load,
+display, and convert an image.
+So here we are.
+And I'm adding this matplotlib inline little command here.
+Basically because I wanna be able to display
+images in the notebook and that's the way that I'm able to
+do that inline with the cells in the notebook.
+So we've added hat], and then we've imported a bunch of
+libraries that we wanna work with.
+The really important ones for us really are the matplotlib.pyplot
+library which is used to work with images.
+And the PIL library as well is also important so
+that I can work with images.
+So what I'm gonna do is I'm gonna just go and
+use curl to go and grab an image from this GitHub repository and
+download that.
+And then I'll just simply open that and show it.
+And notice I'm opening it as a np array, a Numpy array.
+So let's go ahead and run that.
+So we download the image, here it is here.
+I've got this image of me standing here.
+And I've downloaded that,
+I've displayed that in the notebook list.
+Let's take a look at some of the numerical properties of that.
+First of all, what type of thing is that image?
+And it's a numpy.ndarray a multidimensional array,so
+although I'm along viewing it as an image,
+it's obviously just represented as an array of values.
+Well, what type are those values that are in the array?
+Well they're actually unsigned integers, 8-bit integers so
+in other words values between 0 and 255.
+So the numbers that are in that array actually identify
+the intensity of the pixels at each point.
+Let's take a look at the shape of the image.
+And that gives me the dimensions, 433 by 650.
+So we've got a 433 by 650 rectangle and
+I've actually got 3 dimensions of that.
+So these 3 rectangles, each of them 433 650,
+so the 433 650 is obviously the dimensions of the images.
+Self and the 3 different rectangles I've got there,
+is one for the red, one for the green, and one for the blue,
+because it's a color image, so
+I've got those three different dimensions.
+Now what I can do is I can go and
+convert this image to grayscale and once I've converted to gray,
+we'll just show it as a grayscale image, and
+we'll look at the shape of that.
+And this time it's still 433 by 650, but there's only one
+Instance of others, there's only one rectangle because
+we're now showing the thing as intensities of gray and
+we don't need the RGB different layers to do that.
+So I'm able to make it into a single channel image
+by converting it to gray scale.
+And quite often when you're doing some image analysis,
+that's a good way to simplify the process
+you're gonna have to do.
+It's just by getting rid of the multiple channels and
+focusing on the one gray scale channel.

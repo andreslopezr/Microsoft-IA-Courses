@@ -1,0 +1,261 @@
+After you've provisioned the workspace,
+you can start to experiment with data.
+So here I am in my Azure Machine Learning workspace
+in Azure Machine Learning Studio, and
+I'm ready to start working with some data.
+And now, I could just go ahead and
+create an experiment at this point.
+But I wanna work with some data and to get that data into
+here I need to upload the datasets that I'm gonna need.
+Now there are some sample datasets that are provided
+with Azure Machine Learning to help you get started.
+But I'm gonna upload some datasets of my own and
+these are just some text files that I've got locally.
+So we'll go ahead and say we wanna upload some new datasets.
+And I'll go and browse and upload.
+I've got one here that is a record of some exercise that
+my participants in a healthcare clinic have been undertaking.
+So I've been putting them through their paces,
+and they've been doing some exercise, and
+I've been tracking what's going on as they exercise.
+So I've got all that data in this exercise.csv file.
+It's a comma separated file with a header, so I'll go ahead and
+upload that.
+While that is uploading in the background,
+I will upload another data set as well.
+In addition to the details of the exercise they have been
+taking, I have details about the calories that they burned
+while they were exercising.
+So we'll go ahead and upload that file as well.
+And I can see I got this little kind of running status down
+here telling me what's going on.
+The first one is already completed and
+the second one is on its way, so I can get rid of the first one
+just by clicking OK and then do the same for the second one.
+So I've now got my two custom data sets uploaded into
+my environment ready to work with.
+So we'll create a new experiment at this point and
+I would just start, go ahead and create new and
+create a blank experiment and we'll just call this calories.
+Just for the sake of getting something easier to work with,
+I don't need that map so we're just gonna hide that.
+And what I get in the Machine Learning Studio is this
+environment here where I have on the left-hand side,
+all the various things I might wanna work with,
+all the modules that might be involved in my experiment.
+On the right-hand side I have a properties pane that relates to
+the currently selected thing.
+And right in the middle,
+I have this canvas where I'm gonna drag and drop the various
+things that need to work within my experiment.
+So a lot of times if you are creating machine learning models
+you might do in code, you might do it in Python or R or any of
+these other languages that are used for this type of thing.
+And you can do a little bit of that in here as well,
+but the nice thing about Azure Machine Learning Studio is this
+drag and drop environment just makes things a little easier, so
+I'm gonna get my datasets.
+And we're just gonna grab those.
+So for calories, and I've got exercise.
+So we'll drag them out and
+there's not a lot of room to work in here.
+So I'm just gonna drop the zoom down a little bit so
+we can see them both.
+And I can see I've got these modules.
+And each of the modules has this little output port.
+And if I hover over, I get the name of it, it's called dataset.
+And I can always visualize that.
+I just right click and click Visualize.
+And when I do that, I can see the various columns and
+some previews of the data in there.
+I can see there are 15,000 rows of data, there's eight columns.
+And I can select each column and see what's in those.
+I've got the user ID, the gender, the age,
+the height, the weight, how long they were exercising for
+in minutes, their heart rates and their body temperature.
+And I can see as I look at these,
+I can see the statistics for that data.
+So for example if I take a look at heart rate here I can see
+the mean heart rate, the median, the minimum,
+the maximum, and the standard deviation.
+I can see there are 59 unique values, there are no missing
+values so we've got a heart rate measure for everyone.
+And I can see a visualization of that as a histogram.
+Which, as a data scientist, is useful to me,
+cuz I can see that looks like a more or less normal distribution
+that I would expect for some randomly sampled data.
+So I've got the ability just to kind of get a quick look at
+the data using this ability to visualize it.
+Now, we've obviously got these two datasets.
+And one of the things I'm gonna want to do is connect them up.
+So, I could go and add a module.
+We'll just use this join data module and
+I can drag in the left and right.
+So it's just drag and drop and
+I can start to connect up my data flow.
+I see a little red warning line here that says something is not
+quite configured properly yet.
+And that's because I need to tell her how to join these two
+datasets.
+We've seen the exercise data.
+If we take a quick look at the calories data,
+we'll see what's in there.
+And again, there's a user ID and the number of calories that was
+burned during the exercise session here.
+So what I'm gonna do is I'm gonna launch this column
+selector, which is gonna let me select from the available
+columns which one I want to join on.
+So from the left-hand table, which is my Exercise,
+we'll take the user ID.
+And from the right-hand table, or
+I can do the same thing again.
+I can select from the available columns.
+There's also this option to select using rules.
+So I could begin with the none of the columns and
+then select the ones I want.
+Or begin with all of the columns and
+then exclude the ones that I don't want.
+I'll start with no columns and I can choose by
+various different criteria to find the columns I want.
+I'm just going to use the column name here and
+it's the user ID that I'm after.
+So there's a couple different ways of selecting columns.
+I can do that and now my little red warning has gone away
+because I've got these linked.
+There's still a little bit of configuration I want to make.
+It's a number so, the match case won't matter.
+I do want to change the join type.
+I gonna make a left outer join, so that if I do have any
+exercise records where I don't have the calories,
+I'll still keep the details from the exercise side and
+just have a null value for the calories there.
+And, then the other thing I want to do is,
+I want to specify that I don't wanna keep the right key column.
+I don't really need two copies of the user ID column.
+So we won't keep the right-hand one,
+we'll just keep the left-hand one.
+So, now, if I try and visualize the join,
+you'll see that it's grayed out at the moment.
+And that's because I have to run the experiment at this point.
+So I'll go ahead and run it.
+And that's just gonna, first of all, queue the job and
+then start running it and just push that data through.
+I can see a little green text that tells me it's finished
+running and now I can visualize the output of that drawing.
+So, that's pretty useful, I can see user ID and all the way
+along, and then I've got the calories joined on the end.
+So now I've got all the data that I need to work with
+to start analyzing how the various
+different metrics measured when people are exercising relate to
+the number of calories that they burn.
+I could continue to build up this experiment here, but
+I say what I wanna do is start visualizing the data using
+something called a notebook, a Jupyter notebook, and to do that
+I'm gonna have to convert it into a format that I can open up
+in the Jupyter notebooks so I'm gonna convert it to CSV format.
+That's how it started.
+But of course, it started going through this workflow now, so
+there's an internal format that's being used.
+So we'll just convert it back to CSV.
+I can just run that selected module.
+So I don't have to run the entire experiment again.
+Just that one module.
+And when that finishes I've got my CSV output and that means I
+can right click on here and rather than just visualize that,
+I'm gonna open it in a new notebook.
+I can choose the language of the notebook that I wanna
+use in this case.
+I'm gonna use Python 3.
+Now I'm choosing Python and throughout this course we'll use
+Python as the kind of programming language of choice.
+It's a really commonly used programming language by data
+scientists and AI engineers.
+So you can use other languages.
+You could use R if you prefer and later on when we look
+at building a software, you could use any language you like,
+like C# or Java or anything like that.
+But we're gonna focus on using Python in this course,
+just because it's commonly used with data science.
+And you can see that it's already populated a couple of
+these things that we call cells in my workbook.
+It's got some code here that's really is just setting
+up the environment and connecting to my workspace and
+getting the results of that generic CSV output.
+So if I go and run that, I get a little circle here,
+very briefly filled in there as the kernel was running and
+then emptied to tell me I'd finished running.
+And now I've got the command frame,
+which is just gonna show me the data frame containing the data.
+That has been extracted from that CSV file.
+So here's all of my data.
+I can see all of that in there.
+And I'll just collapse that.
+Just so that it doesn't take up quite so much room.
+Really what I wanna do is actually visualize the idea.
+I wanna see the relationships in the data.
+And a great way to do that is to write some code that will
+generate some sort of CHAR or visualization.
+So I've actually got some code here that I'm just going to use.
+And I'll talk you through it briefly, and basically,
+we are using something called matplotlib, which is the library
+within Python that's used for plotting things visually.
+And I've got this little percentage sign here is what we
+call a magic, and it's telling this Jupyter nobic environment
+that I want to display my graphics in line when I run it.
+So we're gonna display the graphic inline as we run it.
+I'm importing a library called Seaborn which is a library that
+has a lot of different built in functions for
+data visualizations.
+I'm specifying that I only wanna use these numerical columns,
+Age, Height, Weight, Duration, Heart Rate, Body Temp, and
+Calories.
+So these are the numeric columns in my dataset.
+And I wanna see how they compare to one another.
+A lot of machine learning is based around correlation and
+relationship between numeric values.
+So we'll take a look at what those look like.
+And we are gonna create something called a PeerPlot.
+And a PeerPlot is basically just a scatterplot
+plotting each numerical value against each other.
+And we're gonna do that as a grid.
+So we'll see a kind of overall scatterplot matrix with
+visualizations of every numerical column compared to
+every other numerical column.
+So go ahead and run that code.
+I get a little warning because it's importing a library and
+there's a few kind of warning messages as it does that.
+But then what should happen when the code is finished running?
+Is that we get this visualization.
+And I can see here all of those numeric values compared
+to one another.
+Now some of them is just a mass of points where we're comparing.
+In that instance, we're comparing height to duration.
+So there's not really any sort of relationship and
+you wouldn't expect a relationship between someone's
+height and how long they exercised for.
+There are some interesting shapes here I can see that
+there's a kind of diagonal line here where weight seems to have
+a correlation with height, which kind of makes sense,
+someone who's tall is probably gonna weigh more so
+I can see there's a kinda relationship forming there.
+And I can see as I read down here.
+There's a relationship here between duration and
+body temperature.
+And it's kind of a curved relationship.
+It's what we call non linear.
+It's not a straight line that gives me that relationship.
+It seems to be sort of a curve.
+As time goes on we get a set of more curved relationship with
+the body temperature.
+And similarly with my duration
+calories if it curves the other way.
+So these same relationships in here that aren't exactly
+linear and I might wanna play around with the scaling and
+the mathematics of some of these numerical features to straighten
+out those relationships to make them easier to deal with.
+But it gives me a good overall view of what the relationships
+are between the different numeric values in my dataset.
+So when I visualized all of that and go back to my experiment and
+carry on working with my data until I'm ready to clean it
+all up, prepare it all and build a machine learning model.
+And that's what we'll talk about next.
